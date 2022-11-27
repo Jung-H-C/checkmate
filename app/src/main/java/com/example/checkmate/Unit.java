@@ -8,6 +8,8 @@ public class Unit {
     int pos_y; // y: 0~4
     boolean flag; // true: A팀, false: B팀
     boolean isDead = false; // 유닛이 죽었는지 확인. 죽으면 true
+    boolean isKing = false;
+    boolean isSelected = false;
 
     public Unit(int pos_y, int pos_x, String name, boolean flag) {
         // img_src를 switch문으로 여기에서 지정해줘야 할 수도 있음!
