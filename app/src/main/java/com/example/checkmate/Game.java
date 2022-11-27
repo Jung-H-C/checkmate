@@ -15,6 +15,9 @@ public class Game extends AppCompatActivity {
     boolean teamflag = true; // true: playerA 차례
     boolean printUI = false;
 
+    Board[][] board = new Board[5][8];
+
+
     // intent로 부터 불러올 player 객체
     Player playerA = null;
     Player playerB = null;
