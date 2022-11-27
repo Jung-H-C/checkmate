@@ -4,7 +4,7 @@ public class Unit {
     String name; // Car, Horse, Queen, Ghost, King 종류
     String img_src; // name으로 linking가능하면 필요없어질듯.
 
-    int pos_x; // (y, x) 순서쌍 좌표계로 board 형성, x: 0~6
+    int pos_x; // (y, x) 순서쌍 좌표계로 board 형성, x: 0~7
     int pos_y; // y: 0~4
     boolean flag; // true: A팀, false: B팀
     boolean isDead = false; // 유닛이 죽었는지 확인. 죽으면 true
