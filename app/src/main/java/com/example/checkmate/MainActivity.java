@@ -2,7 +2,11 @@ package com.example.checkmate;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.Window;
+import android.widget.Button;
 
 // 액티비티 (main -> game)간 주고 받을때 intent 관련 참고 링크:
 // https://stickode.tistory.com/366 (serialize 필수)
@@ -19,6 +23,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+
+        Button test_button = (Button) findViewById(R.id.test_button);
+        test_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Game.class);
+                startActivity(intent);
+            }
+        });
     }
 }
