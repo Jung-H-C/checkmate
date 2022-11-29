@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -25,6 +27,18 @@ public class Game extends AppCompatActivity {
 
     Unit SelectedUnit;
 
+    ImageButton button[][] = new ImageButton[8][5];
+    Integer[][] Rid_button = {
+            {R.id.Button_0_0, R.id.Button_0_1, R.id.Button_0_2, R.id.Button_0_3,
+                    R.id.Button_0_4}, {R.id.Button_1_0, R.id.Button_1_1, R.id.Button_1_2,
+            R.id.Button_1_3, R.id.Button_1_4}, {R.id.Button_2_0, R.id.Button_2_1, R.id.Button_2_2,
+            R.id.Button_2_3, R.id.Button_2_4}, {R.id.Button_3_0, R.id.Button_3_1, R.id.Button_3_2,
+            R.id.Button_3_3, R.id.Button_3_4}, {R.id.Button_4_0, R.id.Button_4_1, R.id.Button_4_2,
+            R.id.Button_4_3, R.id.Button_4_4}, {R.id.Button_5_0, R.id.Button_5_1, R.id.Button_5_2,
+            R.id.Button_5_3, R.id.Button_5_4}, {R.id.Button_6_0, R.id.Button_6_1, R.id.Button_6_2,
+            R.id.Button_6_3, R.id.Button_6_4}, {R.id.Button_7_0, R.id.Button_7_1, R.id.Button_7_2,
+            R.id.Button_7_3, R.id.Button_7_4}};
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +53,27 @@ public class Game extends AppCompatActivity {
         playerA = player1;
         playerB = player2;
 
-        mHandler = new Handler() {
+        // imageButton 선언
+        for (int x = 0; x<8; x++) {
+            for (int y = 0; y<5; y++) {
+                button[x][y] = (ImageButton) findViewById(Rid_button[x][y]);
+            }
+        }
+
+        //* imageButton setonclick listner 작성후
+        // 버튼 클릭시 해당 버튼에 있는 유닛을 SelectedUnit으로 할당당
+
+       mHandler = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
 //                super.handleMessage(msg); 자동 완성코드 없어도될듯
                 // UI 출력 코드
+                for (int x = 0; x<8; x++) {
+                    for (int y = 0; y<5; y++) {
+                        //board imagebutton 출력
+
+                    }
+                }
             }
         };
 
