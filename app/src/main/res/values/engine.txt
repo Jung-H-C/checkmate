@@ -1,0 +1,20 @@
+** 일단 메인 스레드내에 게임엔진용 서브 스레드를 무한루프로 돌리는 방식으로 구현해 볼 예정!
+
+1) 유닛이 처음 배치될때:
+-> Player클래스의 객체 playerA, playerB를 생성하고(사실 생성하는건 환경설정에서 할 것임), 그 안에 있는 멤버변수 units[0][1][2][3][4] 총 4개를 각 배치에 맞게 설정
+(name, img_src, pos_x, pos_y, flag(팀)) 설정
+-> onCreate하자마자, 각 playerA, playerB에 있는 units[0][1][2][3][4]의 getPos_x, getPos_y해서 해당 유닛의 자표에 해당하는 boardbutton[getPos_x][getPos_y].unitInside = playerA.units[i] 할당
+버
+
+*) 말 선택할때: onCreate하자마자 모든 boardbutton clickable=false 고정! -> 말을 선택하면 해당 이미지버튼이 2배 커졌다가 작아지며 다른 말은 clickable=false가 됩니다. 
+자기 자신을 한번 더 누르면 모든 말이 clickable=true가 됩니다.
+-> 선택된 말이 갈 수 있는 boardbutton을 계산하여 갈 수 있는 boardbutton의 테두리를 노랗게 표시하며 해당 boardbutton의 clickable= true로 바꿉니다.
+-> 해당 boardbutton을 누르면 모든 boardbutton의 clickable=false로 바꾸고 유닛 이동 method 실행.
+
+2) 유닛 이동할 때 :
+-> 유닛의 x,y값을 바꿔준 다음, dest버튼의 unitInside를 새로 할당해주고 start버튼의 unitInside을 null값으로 할당.
+
+3) 유닛 잡을 때:
+-> 유닛이동이랑 같은 메커니즘인데, 이동 전에 잡힌 유닛의 isDead를 true로 바꾸고 이동한다.
+
+4) 

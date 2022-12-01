@@ -2,7 +2,7 @@ package com.example.checkmate;
 
 public class Unit {
     String name; // Car, Horse, Queen, Ghost, King 종류
-    String img_src; // name으로 linking가능하면 필요없어질듯.
+    String img_src; // 이미지 경로
 
     int pos_x; // (y, x) 순서쌍 좌표계로 board 형성, x: 0~7
     int pos_y; // y: 0~4

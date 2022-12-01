@@ -22,4 +22,12 @@ public class Player {
             units[no] = new Unit(no, 6, name, false);
         }
     }
+//    public Unit getUnit(int pos_x, int pos_y) {
+//        Unit SpecifiedUnit;
+//        for (int i = 0; i < 5; i++) {
+//            if(pos_x == this.units[i].getPos_x() && pos_y == this.units[i].getPos_y()) {
+//                SpecifiedUnit = this.units[i];
+//            }
+//        }
+//    } 구현할 필요는 없을거 같음.
 }

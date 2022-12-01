@@ -59,7 +59,9 @@ public class Game extends AppCompatActivity {
         // imageButton 선언
         for (int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
+                // 보드판 이미지 선언
                 button[x][y] = (ImageButton) findViewById(Rid_button[x][y]);
+                // 보드판을 각 boardbutton class에 짝을 맞춰줌
                 boardbutton[x][y].set_pos(x, y);
             }
         }
