@@ -410,4 +410,20 @@
         android:padding="2dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_profile_A"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="84dp" />
+
+    <TextView
+        android:id="@+id/tv_profile_B"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        tools:layout_editor_absoluteX="641dp"
+        tools:layout_editor_absoluteY="84dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

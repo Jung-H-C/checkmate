@@ -39,6 +39,9 @@ public class Game extends AppCompatActivity {
             R.id.Button_6_3, R.id.Button_6_4}, {R.id.Button_7_0, R.id.Button_7_1, R.id.Button_7_2,
             R.id.Button_7_3, R.id.Button_7_4}};
 
+    Board boardbutton[][] = new Board[8][5];
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +60,7 @@ public class Game extends AppCompatActivity {
         for (int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
                 button[x][y] = (ImageButton) findViewById(Rid_button[x][y]);
+                boardbutton[x][y].set_pos(x, y);
             }
         }
 
