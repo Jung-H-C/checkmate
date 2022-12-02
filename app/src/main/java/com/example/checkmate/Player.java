@@ -11,6 +11,18 @@ public class Player {
         this.profile_name = name;
         this.profile_img = profile_img;
         this.units[2].isKing = true;
+        // Horse, Queen, king, Ghost, Car 순
+        this.units[0].setName("Horse");
+        this.units[1].setName("Queen");
+        this.units[2].setName("King");
+        this.units[3].setName("Ghost");
+        this.units[4].setName("Car");
+
+        this.units[0].setImg_src("@drawble/horse");
+        this.units[1].setImg_src("@drawble/queen");
+        this.units[2].setImg_src("@drawble/king");
+        this.units[3].setImg_src("@drawble/ghost");
+        this.units[4].setImg_src("@drawble/car");
     }
 
     public void setUnitStatus(String name, int no, boolean flag) {

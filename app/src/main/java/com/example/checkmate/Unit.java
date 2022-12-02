@@ -1,7 +1,7 @@
 package com.example.checkmate;
 
 public class Unit {
-    String name; // Car, Horse, Queen, Ghost, King 종류
+    String name; // // Horse, Queen, king, Ghost, Car 순
     String img_src; // 이미지 경로
 
     int pos_x; // (y, x) 순서쌍 좌표계로 board 형성, x: 0~7
@@ -26,6 +26,8 @@ public class Unit {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void setImg_src(String img_src) {this.img_src = img_src; }
 
     public int getPos_x() {
         return pos_x;

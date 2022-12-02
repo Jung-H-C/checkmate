@@ -7,6 +7,12 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class unit_allocation extends AppCompatActivity {
+
+    Player playerA = null;
+    Player playerB = null;
+
+    Unit SelectedUnit = null;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -141,13 +141,13 @@
         app:rowCount="5">
 
         <ImageButton
-            android:id="@+id/imageButton52"
+            android:id="@+id/alloc_Button_0_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton53"
+            android:id="@+id/alloc_Button_1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
@@ -159,25 +159,25 @@
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton54"
+            android:id="@+id/alloc_Button_6_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton55"
+            android:id="@+id/alloc_Button_7_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton57"
+            android:id="@+id/alloc_Button_0_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton58"
+            android:id="@+id/alloc_Button_1_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
@@ -189,25 +189,25 @@
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton60"
+            android:id="@+id/alloc_Button_6_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton61"
+            android:id="@+id/alloc_Button_7_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton62"
+            android:id="@+id/alloc_Button_0_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/board_button" />
+            app:srcCompat="@drawable/king" />
 
         <ImageButton
-            android:id="@+id/imageButton63"
+            android:id="@+id/alloc_Button_1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
@@ -219,25 +219,25 @@
             app:srcCompat="@drawable/ready_button" />
 
         <ImageButton
-            android:id="@+id/imageButton65"
+            android:id="@+id/alloc_Button_6_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton66"
+            android:id="@+id/alloc_Button_7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:srcCompat="@drawable/king" />
+
+        <ImageButton
+            android:id="@+id/alloc_Button_0_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton67"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/board_button" />
-
-        <ImageButton
-            android:id="@+id/imageButton69"
+            android:id="@+id/alloc_Button_1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
@@ -249,25 +249,25 @@
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton71"
+            android:id="@+id/alloc_Button_6_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton72"
+            android:id="@+id/alloc_Button_7_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton73"
+            android:id="@+id/alloc_Button_0_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton74"
+            android:id="@+id/alloc_Button_1_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
@@ -279,13 +279,13 @@
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton76"
+            android:id="@+id/alloc_Button_6_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
-            android:id="@+id/imageButton77"
+            android:id="@+id/alloc_Button_7_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:srcCompat="@drawable/board_button" />
