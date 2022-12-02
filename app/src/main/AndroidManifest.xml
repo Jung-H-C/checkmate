@@ -27,7 +27,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".Game" android:label="test"/>
+        <activity android:name=".Game" android:screenOrientation="landscape" android:label="test"/>
     </application>
 
 </manifest>

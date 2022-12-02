@@ -6,6 +6,258 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.gridlayout.widget.GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="35dp"
+        app:columnCount="8"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:rowCount="5">
+
+        <ImageButton
+            android:id="@+id/Button_0_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_1_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_2_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_3_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_4_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_5_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_6_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_7_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_0_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_1_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_2_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_3_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_4_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_5_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_6_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_7_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_0_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_1_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_2_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_3_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_4_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_5_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_6_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_7_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_0_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_1_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_2_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_3_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_4_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_5_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_6_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_7_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_0_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_1_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_2_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_3_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_4_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_5_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_6_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+
+        <ImageButton
+            android:id="@+id/Button_7_0"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/board_button" />
+    </androidx.gridlayout.widget.GridLayout>
+
     <Button
         android:id="@+id/btn_game_end"
         android:layout_width="77dp"
@@ -56,288 +308,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/board_button" />
-        </TableRow>
-
-    </TableLayout>
-
-    <TableLayout
-        android:id="@+id/tableLayout"
-        android:layout_width="433dp"
-        android:layout_height="255dp"
-        android:layout_marginTop="35dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/Button_0_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_1_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_2_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_3_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_4_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_5_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_6_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_7_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/Button_0_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_1_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_2_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_3_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_4_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_5_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_6_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_7_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/Button_0_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_2_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_3_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_4_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_5_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_6_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_7_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/Button_0_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_1_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_2_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_3_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_4_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_5_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_6_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_7_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <ImageButton
-                android:id="@+id/Button_0_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_1_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_2_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_3_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_4_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_5_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_6_0"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Button_7_0"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/board_button" />
-
         </TableRow>
 
     </TableLayout>
@@ -415,15 +385,17 @@
         android:id="@+id/tv_profile_A"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="32dp"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="84dp" />
 
     <TextView
         android:id="@+id/tv_profile_B"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="32dp"
         android:text="TextView"
-        tools:layout_editor_absoluteX="641dp"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="84dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

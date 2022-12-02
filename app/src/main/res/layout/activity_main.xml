@@ -11,9 +11,11 @@
         android:id="@+id/btn_to_tutorials"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="300dp"
+        android:layout_marginBottom="16dp"
         android:text="게임 설명"
-        app:layout_constraintStart_toEndOf="@+id/btn_to_board_setting"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/btn_to_board_setting"
@@ -23,23 +25,26 @@
         android:backgroundTint="#F6E9E9"
         android:text="게임 시작"
         app:cornerRadius="@null"
-        tools:layout_editor_absoluteX="318dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="252dp" />
 
     <Button
         android:id="@+id/btn_to_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="300dp"
+        android:layout_marginBottom="16dp"
         android:text="환경 설정"
-        app:layout_constraintEnd_toStartOf="@+id/btn_to_board_setting"
-        tools:layout_editor_absoluteY="302dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/test_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        tools:layout_editor_absoluteX="517dp"
+        app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="25dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

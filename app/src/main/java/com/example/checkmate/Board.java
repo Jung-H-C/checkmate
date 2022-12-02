@@ -6,6 +6,11 @@ public class Board {
         pos_y = y;
         unitInside = unit;
     }
+
+    public Board (int x, int y) {
+        pos_x = x;
+        pos_y = y;
+    }
     int pos_x;
     int pos_y;
     Unit unitInside;

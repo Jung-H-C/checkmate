@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
@@ -32,10 +31,10 @@ public class Game extends AppCompatActivity {
             {R.id.Button_0_0, R.id.Button_0_1, R.id.Button_0_2, R.id.Button_0_3,
                     R.id.Button_0_4}, {R.id.Button_1_0, R.id.Button_1_1, R.id.Button_1_2,
             R.id.Button_1_3, R.id.Button_1_4}, {R.id.Button_2_0, R.id.Button_2_1, R.id.Button_2_2,
-            R.id.Button_2_3, R.id.Button_2_4}, {R.id.Button_3_0, R.id.Button_3_1, R.id.Button_3_2,
-            R.id.Button_3_3, R.id.Button_3_4}, {R.id.Button_4_0, R.id.Button_4_1, R.id.Button_4_2,
+            R.id.Button_2_3, R.id.Button_2_4}, {R.id.Button_5_0, R.id.Button_3_1, R.id.Button_3_2,
+            R.id.Button_3_3, R.id.Button_3_4}, {R.id.Button_6_0, R.id.Button_4_1, R.id.Button_4_2,
             R.id.Button_4_3, R.id.Button_4_4}, {R.id.Button_5_0, R.id.Button_5_1, R.id.Button_5_2,
-            R.id.Button_5_3, R.id.Button_5_4}, {R.id.Button_6_0, R.id.Button_6_1, R.id.Button_6_2,
+            R.id.Button_5_3, R.id.Button_5_4}, {R.id.Button_7_0, R.id.Button_6_1, R.id.Button_6_2,
             R.id.Button_6_3, R.id.Button_6_4}, {R.id.Button_7_0, R.id.Button_7_1, R.id.Button_7_2,
             R.id.Button_7_3, R.id.Button_7_4}};
 
@@ -62,7 +61,7 @@ public class Game extends AppCompatActivity {
                 // 보드판 이미지 선언
                 button[x][y] = (ImageButton) findViewById(Rid_button[x][y]);
                 // 보드판을 각 boardbutton class에 짝을 맞춰줌
-                boardbutton[x][y].set_pos(x, y);
+                boardbutton[x][y] = new Board(x, y);
             }
         }
 
