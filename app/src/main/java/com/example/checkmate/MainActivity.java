@@ -26,11 +26,11 @@ public class MainActivity extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        Button test_button = (Button) findViewById(R.id.test_button);
+        Button test_button = (Button) findViewById(R.id.btn_to_board_setting);
         test_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), Game.class);
+                Intent intent = new Intent(getApplicationContext(), unit_allocation.class);
                 startActivity(intent);
             }
         });

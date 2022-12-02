@@ -28,6 +28,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".Game" android:screenOrientation="landscape" android:label="test"/>
+        <activity android:name=".unit_allocation" android:screenOrientation="landscape" android:label="test"/>
     </application>
 
 </manifest>
