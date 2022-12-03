@@ -5,10 +5,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -124,6 +126,20 @@ public class Game extends AppCompatActivity {
             }
         }.start();
 
+        Controller_A_1_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (teamflag) {
+                    // 만약 해당 유닛이 죽어있으면 취소
+                    if(!playerA.units[4].isDead) {
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+
+                    }
+                }
+            }
+        });
+
 //       mHandler = new Handler() {
 //            @Override
 //            public void handleMessage(@NonNull Message msg) {
@@ -161,6 +177,45 @@ public class Game extends AppCompatActivity {
         // + click시 해당 button에 unit있을시 SelectedUnit 에 update
 
 
+    }
+
+    Boolean Movement(Unit Selected, int pos_x, int pos_y) {
+        int cur_x = Selected.getPos_x();
+        int cur_y = Selected.getPos_y();
+
+        switch (Selected.name) {
+            case "Horse":
+                if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
+                else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
+                else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
+                else if (pos_x - cur_x == 2 && pos_y - cur_y == -1) return true;
+                else if (pos_x - cur_x == 1 && pos_y - cur_y == -2) return true;
+                else if (pos_x - cur_x == -1 && pos_y - cur_y == -2) return true;
+                else if (pos_x - cur_x == -2 && pos_y - cur_y == -1) return true;
+                else if (pos_x - cur_x == -2 && pos_y - cur_y == 1) return true;
+                else return false;
+            case "Queen":
+                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) return true;
+                else return false;
+            case "King":
+                if((cur_x != pos_x) && (cur_y != pos_y)) return false;
+                else {
+                    if(Math.abs(cur_x - pos_x) > 1) return false;
+                    else if(Math.abs(cur_y - pos_y) > 1) return false;
+                    else return true;
+                }
+            case "Ghost":
+            case "Car":
+                // y값이 같을떄:
+                if(cur_y == pos_y) {
+                    if(Math.abs(cur_x - pos_x) <= 3) return true;
+                    else return false;
+                }else {
+                    if(cur_x != pos_x) return false;
+                    else if(Math.abs(cur_y - pos_y) <= 1) return true;
+                    else return false;
+                }
+        }
     }
 
     void chessEngine(Player playerA, Player playerB) {
