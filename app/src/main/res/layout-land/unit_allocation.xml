@@ -73,12 +73,14 @@
                 android:id="@+id/alloc_controller_A_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:scaleType="fitXY"
                 app:srcCompat="@drawable/ghost" />
 
             <ImageButton
                 android:id="@+id/alloc_controller_A_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:scaleType="fitXY"
                 app:srcCompat="@drawable/car" />
         </TableRow>
 
@@ -144,60 +146,70 @@
             android:id="@+id/alloc_Button_0_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_1_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/imageButton56"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_6_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_7_4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_0_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_1_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/imageButton59"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_6_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_7_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
@@ -210,6 +222,7 @@
             android:id="@+id/alloc_Button_1_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
@@ -222,6 +235,7 @@
             android:id="@+id/alloc_Button_6_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
@@ -234,60 +248,70 @@
             android:id="@+id/alloc_Button_0_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_1_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/imageButton70"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_6_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_7_1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_0_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_1_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/imageButton75"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/large_board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_6_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/alloc_Button_7_0"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:clickable="false"
             app:srcCompat="@drawable/board_button" />
     </androidx.gridlayout.widget.GridLayout>
 

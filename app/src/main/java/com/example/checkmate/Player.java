@@ -4,13 +4,17 @@ public class Player {
     String profile_name;
     String profile_img;
 
-    Unit[] units = new Unit[5];
+    Unit[] units;
     // units 스태틱 변수로 놓으면 안됨! 해당 player만 사용!
 
     public Player(String name, String profile_img) {
         this.profile_name = name;
         this.profile_img = profile_img;
-        this.units[2].isKing = true;
+
+        this.units = new Unit[5];
+        for (int i = 0; i<5; i++) {
+            this.units[i] = new Unit();
+        }
         // Horse, Queen, king, Ghost, Car 순
         this.units[0].setName("Horse");
         this.units[1].setName("Queen");
