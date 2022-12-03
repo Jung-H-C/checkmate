@@ -1,11 +1,14 @@
 package com.example.checkmate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,6 +22,9 @@ public class Game extends AppCompatActivity {
 
     Board[][] board = new Board[5][8];
 
+    ImageView a_profile, b_profile;
+    TextView tv_profile_A, tv_profile_B;
+
 
     // intent로 부터 불러올 player 객체
     Player playerA = null;
@@ -27,6 +33,8 @@ public class Game extends AppCompatActivity {
     Unit SelectedUnit;
 
     ImageButton button[][] = new ImageButton[8][5];
+    ImageButton Controller_A_0_0, Controller_A_1_0, Controller_A_0_1, Controller_A_1_1;
+    ImageButton Controller_B_0_0, Controller_B_1_0, Controller_B_0_1, Controller_B_1_1;
     Integer[][] Rid_button = {
             {R.id.Button_0_0, R.id.Button_0_1, R.id.Button_0_2, R.id.Button_0_3,
                     R.id.Button_0_4}, {R.id.Button_1_0, R.id.Button_1_1, R.id.Button_1_2,
@@ -39,6 +47,12 @@ public class Game extends AppCompatActivity {
             R.id.Button_7_3, R.id.Button_7_4}};
 
     Board boardbutton[][] = new Board[8][5];
+
+    class UI_Thread extends Thread {
+        public void run() {
+
+        }
+    }
 
 
     @Override
@@ -55,6 +69,19 @@ public class Game extends AppCompatActivity {
         playerA = player1;
         playerB = player2;
 
+        a_profile = (ImageView) findViewById(R.id.A_profile);
+        b_profile = (ImageView) findViewById(R.id.B_profile);
+        tv_profile_A = (TextView) findViewById(R.id.tv_profile_A);
+        tv_profile_B = (TextView) findViewById(R.id.tv_profile_B);
+        Controller_A_0_0 = (ImageButton) findViewById(R.id.Controller_A_0_0);
+        Controller_A_1_0 = (ImageButton) findViewById(R.id.Controller_A_1_0);
+        Controller_A_0_1 = (ImageButton) findViewById(R.id.Controller_A_0_1);
+        Controller_A_1_1 = (ImageButton) findViewById(R.id.Controller_A_1_1);
+        Controller_B_0_0 = (ImageButton) findViewById(R.id.Controller_B_0_0);
+        Controller_B_1_0 = (ImageButton) findViewById(R.id.Controller_B_1_0);
+        Controller_B_0_1 = (ImageButton) findViewById(R.id.Controller_B_0_1);
+        Controller_B_1_1 = (ImageButton) findViewById(R.id.Controller_B_1_1);
+
         // imageButton 선언
         for (int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
@@ -67,38 +94,68 @@ public class Game extends AppCompatActivity {
 
         //* imageButton setonclick listner 작성후
         // 버튼 클릭시 해당 버튼에 있는 유닛을 SelectedUnit으로 할당당
+        for(int i = 0; i<5; i++) {
+            boardbutton[playerA.units[i].getPos_x()][playerA.units[i].getPos_y()].unitInside =playerA.units[i];
+            boardbutton[playerB.units[i].getPos_x()][playerB.units[i].getPos_y()].unitInside =playerB.units[i];
+        }
 
-       mHandler = new Handler() {
-            @Override
-            public void handleMessage(@NonNull Message msg) {
-//                super.handleMessage(msg); 자동 완성코드 없어도될듯
-                // UI 출력 코드
-                for (int x = 0; x<8; x++) {
+        new Thread() {
+            public void run() {
+                // 프로필
+                Context c = getApplicationContext();
+                int id = c.getResources().getIdentifier(playerA.profile_img, null, c.getPackageName());
+                a_profile.setImageResource(id);
+                id = c.getResources().getIdentifier(playerB.profile_img, null, c.getPackageName());
+                b_profile.setImageResource(id);
+
+                tv_profile_A.setText(playerA.profile_name);
+                tv_profile_B.setText(playerB.profile_name);
+
+                // 보드판 말 출력
+                for(int x = 0; x<8; x++) {
                     for (int y = 0; y<5; y++) {
-                        //board imagebutton 출력
-
+                        if(boardbutton[x][y].IsOccupied()) {
+                            id = c.getResources().getIdentifier(boardbutton[x][y].get_img_src(), null, c.getPackageName());
+                            button[x][y].setImageResource(id);
+                        }
                     }
                 }
+
             }
-        };
+        }.start();
+
+//       mHandler = new Handler() {
+//            @Override
+//            public void handleMessage(@NonNull Message msg) {
+////                super.handleMessage(msg); 자동 완성코드 없어도될듯
+//                // UI 출력 코드
+//                for (int x = 0; x<8; x++) {
+//                    for (int y = 0; y<5; y++) {
+//                        //board imagebutton 출력
+//
+//                    }
+//                }
+//            }
+//        };
 
         // 서브 스레드 (1초마다 UI 출력하는 핸들러 불러옴)
         // https://recipes4dev.tistory.com/150 참고
-        class UI_Printer implements Runnable {
-            @Override
-            public void run() {
-                while (printUI) {
-                    mHandler.sendEmptyMessage(0);
-                    printUI = false;
-                    // 1초마다 불러오려면 사용 (안해도 될듯)
-//                    try {
-//                        Thread.sleep(1000);
-//                    } catch (Exception e) {
-//                        e.printStackTrace();
-//                    }
-                }
-            }
-        }
+//        class UI_Printer implements Runnable {
+//            @Override
+//            public void run() {
+//                while (printUI) {
+//                    mHandler.sendEmptyMessage(0);
+//                    printUI = false;
+//                    // 1초마다 불러오려면 사용 (안해도 될듯)
+////                    try {
+////                        Thread.sleep(1000);
+////                    } catch (Exception e) {
+////                        e.printStackTrace();
+////                    }
+//                }
+//            }
+//        }
+
 
         // 버튼 40개 onclickListener 구현 (for문으로)
         // + click시 해당 button에 unit있을시 SelectedUnit 에 update
@@ -150,17 +207,6 @@ public class Game extends AppCompatActivity {
 
     }
 
-    // 해당 (x,y) 버튼에 유닛이 있는지 확인하는 함수
-    boolean IsOccupied(int pos_x, int pos_y) {
-        for (int i = 0; i < 5; i++) {
-            if((playerA.units[i].pos_x == pos_x) && (playerA.units[i].pos_y == pos_y)) {
-                return true;
-            }else if((playerB.units[i].pos_x == pos_x) && (playerB.units[i].pos_y == pos_y)) {
-                return true;
-            }
-        }
-        return false;
-    }
 
     void PlayerA_Win() {
 
@@ -176,4 +222,6 @@ public class Game extends AppCompatActivity {
 
 
 
+
 }
+

@@ -281,16 +281,16 @@
             android:layout_height="match_parent">
 
             <ImageButton
+                android:id="@+id/Controller_A_0_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/horse" />
+
+            <ImageButton
                 android:id="@+id/Controller_A_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Controller_A_1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
+                android:src="@drawable/queen" />
         </TableRow>
 
         <TableRow
@@ -298,16 +298,16 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/Controller_A_1_3"
+                android:id="@+id/Controller_A_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
+                android:src="@drawable/ghost" />
 
             <ImageButton
-                android:id="@+id/Controller_A_1_4"
+                android:id="@+id/Controller_A_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
+                android:src="@drawable/car" />
         </TableRow>
 
     </TableLayout>
@@ -326,16 +326,16 @@
             android:layout_height="match_parent">
 
             <ImageButton
+                android:id="@+id/Controller_B_0_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/horse" />
+
+            <ImageButton
                 android:id="@+id/Controller_B_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
-
-            <ImageButton
-                android:id="@+id/Controller_B_1_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
+                android:src="@drawable/queen" />
         </TableRow>
 
         <TableRow
@@ -343,16 +343,16 @@
             android:layout_height="match_parent">
 
             <ImageButton
-                android:id="@+id/Controller_B_2_1"
+                android:id="@+id/Controller_B_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
+                android:src="@drawable/ghost" />
 
             <ImageButton
-                android:id="@+id/Controller_B_2_2"
+                android:id="@+id/Controller_B_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/board_button" />
+                android:src="@drawable/car" />
         </TableRow>
 
     </TableLayout>

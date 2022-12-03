@@ -37,7 +37,7 @@ public class Board {
     // 이미지 경로를 불러오는 get_img_src()함수
     String get_img_src() {
         if (unitInside != null) return unitInside.img_src;
-        else return "@drawable/board_button";
+        else return "drawable/board_button";
     }
 
 }

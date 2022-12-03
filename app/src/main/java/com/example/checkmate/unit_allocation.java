@@ -142,7 +142,7 @@ public class unit_allocation extends AppCompatActivity {
         alloc_controller_A_1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SelectedUnit = playerA.units[4];
+                SelectedUnit = playerA.units[1];
                 ChecksForNotOccupiedButton();
             }
         });
@@ -150,7 +150,7 @@ public class unit_allocation extends AppCompatActivity {
         alloc_controller_B_1_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SelectedUnit = playerB.units[4];
+                SelectedUnit = playerB.units[1];
                 ChecksForNotOccupiedButton();
             }
         });
