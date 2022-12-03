@@ -1,6 +1,8 @@
 package com.example.checkmate;
 
-public class Player {
+import java.io.Serializable;
+
+public class Player implements Serializable {
     String profile_name;
     String profile_img;
 

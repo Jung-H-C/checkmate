@@ -1,6 +1,7 @@
 package com.example.checkmate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -72,22 +73,37 @@ public class unit_allocation extends AppCompatActivity {
 
 
         BaseSetting(playerA, playerB);
+        btn_to_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
+        btn_to_game.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Game.class);
+                intent.putExtra("playerA", playerA);
+                intent.putExtra("playerB", playerB);
+                startActivity(intent);
+            }
+        });
         // 컨트롤러 클릭시
         alloc_controller_A_0_0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerA.units[3];
-                for(int x = 0; x<2; x++) {
-                    for (int y = 0; y<5; y++) {
-                        if(alloc_boardbutton[x][y].IsOccupied()) continue;
-                        else {
-                            // 노랗게 표시
-                            alloc_Button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                            alloc_Button[x][y].setClickable(true);
-                        }
-                    }
-                }
+                ChecksForNotOccupiedButton();
+            }
+        });
+
+        alloc_controller_B_0_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectedUnit = playerB.units[3];
+                ChecksForNotOccupiedButton();
             }
         });
 
@@ -95,16 +111,47 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerA.units[4];
-                for(int x = 0; x<2; x++) {
-                    for (int y = 0; y<5; y++) {
-                        if(alloc_boardbutton[x][y].IsOccupied()) continue;
-                        else {
-                            // 노랗게 표시
-                            alloc_Button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                            alloc_Button[x][y].setClickable(true);
-                        }
-                    }
-                }
+                ChecksForNotOccupiedButton();
+            }
+        });
+
+        alloc_controller_B_1_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectedUnit = playerB.units[4];
+                ChecksForNotOccupiedButton();
+            }
+        });
+
+        alloc_controller_A_0_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectedUnit = playerA.units[0];
+                ChecksForNotOccupiedButton();
+            }
+        });
+
+        alloc_controller_B_0_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectedUnit = playerB.units[0];
+                ChecksForNotOccupiedButton();
+            }
+        });
+
+        alloc_controller_A_1_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectedUnit = playerA.units[4];
+                ChecksForNotOccupiedButton();
+            }
+        });
+
+        alloc_controller_B_1_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SelectedUnit = playerB.units[4];
+                ChecksForNotOccupiedButton();
             }
         });
 
@@ -139,6 +186,32 @@ public class unit_allocation extends AppCompatActivity {
             }
         }
 
+    }
+
+    void ChecksForNotOccupiedButton() {
+        if(SelectedUnit.flag) {
+            for (int x = 0; x < 2; x++) {
+                for (int y = 0; y < 5; y++) {
+                    if (alloc_boardbutton[x][y].IsOccupied()) continue;
+                    else {
+                        // 노랗게 표시
+                        alloc_Button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                        alloc_Button[x][y].setClickable(true);
+                    }
+                }
+            }
+        }else {
+            for (int x = 2; x < 4; x++) {
+                for (int y = 0; y < 5; y++) {
+                    if (alloc_boardbutton[x][y].IsOccupied()) continue;
+                    else {
+                        // 노랗게 표시
+                        alloc_Button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                        alloc_Button[x][y].setClickable(true);
+                    }
+                }
+            }
+        }
     }
     void SetAllUnClickable() {
         for (int x = 0; x<4; x++) {

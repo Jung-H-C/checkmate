@@ -2,7 +2,9 @@ package com.example.checkmate;
 
 import android.content.Context;
 
-public class Unit {
+import java.io.Serializable;
+
+public class Unit implements Serializable {
     String name; // // Horse, Queen, king, Ghost, Car 순
     String img_src; // 이미지 경로
 
