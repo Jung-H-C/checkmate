@@ -34,6 +34,8 @@ public class unit_allocation extends AppCompatActivity {
     ImageButton btn_to_game;
     Button btn_to_menu;
 
+    int cur_X, cur_Y;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -66,6 +68,8 @@ public class unit_allocation extends AppCompatActivity {
         alloc_controller_B_1_1 = (ImageButton) findViewById(R.id.alloc_controller_B_1_1);
         btn_to_game = (ImageButton) findViewById(R.id.imageButton64);
         btn_to_menu= (Button) findViewById(R.id.btn_to_mainmenu);
+
+
 
         BaseSetting(playerA, playerB);
 
@@ -115,6 +119,10 @@ public class unit_allocation extends AppCompatActivity {
                         if(SelectedUnit == null) {
                             Toast.makeText(getApplicationContext(), "유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
                         }
+                        if(ChecksIfSelected(SelectedUnit)) {
+                            alloc_boardbutton[cur_X][cur_Y].unitInside = null;
+                            alloc_Button[cur_X][cur_Y].setImageResource(R.drawable.board_button);
+                        }
                         if(SelectedUnit.flag) {
                             // A팀
                             SelectedUnit.setPos(finalX, finalY);
@@ -136,6 +144,9 @@ public class unit_allocation extends AppCompatActivity {
         for (int x = 0; x<4; x++) {
             for (int y = 0; y<5; y++) {
                 alloc_Button[x][y].setClickable(false);
+                if (!alloc_boardbutton[x][y].IsOccupied()) {
+                    alloc_Button[x][y].setImageResource(R.drawable.board_button);
+                }
             }
         }
     }
@@ -168,8 +179,19 @@ public class unit_allocation extends AppCompatActivity {
         playerB.units[1].setImg_src("drawable/queen");
         playerB.units[3].setImg_src("drawable/ghost");
         playerB.units[4].setImg_src("drawable/car");
+    }
 
-
+    Boolean ChecksIfSelected(Unit Selected) {
+        for (int x = 0; x<4; x++) {
+            for (int y = 0; y<5; y++) {
+                if (alloc_boardbutton[x][y].unitInside == Selected) {
+                    cur_X = x;
+                    cur_Y = y;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
 }
