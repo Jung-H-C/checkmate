@@ -36,6 +36,7 @@ public class unit_allocation extends AppCompatActivity {
     Button btn_to_menu;
 
     int cur_X, cur_Y;
+    int offset;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,6 +96,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerA.units[3];
+                offset = 3;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -103,6 +105,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerB.units[3];
+                offset = 3;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -111,6 +114,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerA.units[4];
+                offset = 4;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -119,6 +123,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerB.units[4];
+                offset = 4;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -127,6 +132,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerA.units[0];
+                offset = 0;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -135,6 +141,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerB.units[0];
+                offset = 0;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -143,6 +150,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerA.units[1];
+                offset = 1;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -151,6 +159,7 @@ public class unit_allocation extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 SelectedUnit = playerB.units[1];
+                offset = 1;
                 ChecksForNotOccupiedButton();
             }
         });
@@ -173,8 +182,10 @@ public class unit_allocation extends AppCompatActivity {
                         if(SelectedUnit.flag) {
                             // A팀
                             SelectedUnit.setPos(finalX, finalY);
+                            playerA.units[offset] = SelectedUnit;
                         }else {
                             SelectedUnit.setPos(finalX+4, finalY);
+                            playerB.units[offset] = SelectedUnit;
                         }
                         alloc_boardbutton[finalX][finalY].unitInside = SelectedUnit;
                         Context c = getApplicationContext();

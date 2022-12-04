@@ -41,10 +41,10 @@ public class Game extends AppCompatActivity {
             {R.id.Button_0_0, R.id.Button_0_1, R.id.Button_0_2, R.id.Button_0_3,
                     R.id.Button_0_4}, {R.id.Button_1_0, R.id.Button_1_1, R.id.Button_1_2,
             R.id.Button_1_3, R.id.Button_1_4}, {R.id.Button_2_0, R.id.Button_2_1, R.id.Button_2_2,
-            R.id.Button_2_3, R.id.Button_2_4}, {R.id.Button_5_0, R.id.Button_3_1, R.id.Button_3_2,
-            R.id.Button_3_3, R.id.Button_3_4}, {R.id.Button_6_0, R.id.Button_4_1, R.id.Button_4_2,
+            R.id.Button_2_3, R.id.Button_2_4}, {R.id.Button_3_0, R.id.Button_3_1, R.id.Button_3_2,
+            R.id.Button_3_3, R.id.Button_3_4}, {R.id.Button_4_0, R.id.Button_4_1, R.id.Button_4_2,
             R.id.Button_4_3, R.id.Button_4_4}, {R.id.Button_5_0, R.id.Button_5_1, R.id.Button_5_2,
-            R.id.Button_5_3, R.id.Button_5_4}, {R.id.Button_7_0, R.id.Button_6_1, R.id.Button_6_2,
+            R.id.Button_5_3, R.id.Button_5_4}, {R.id.Button_6_0, R.id.Button_6_1, R.id.Button_6_2,
             R.id.Button_6_3, R.id.Button_6_4}, {R.id.Button_7_0, R.id.Button_7_1, R.id.Button_7_2,
             R.id.Button_7_3, R.id.Button_7_4}};
 
@@ -99,6 +99,8 @@ public class Game extends AppCompatActivity {
         for(int i = 0; i<5; i++) {
             boardbutton[playerA.units[i].getPos_x()][playerA.units[i].getPos_y()].unitInside =playerA.units[i];
             boardbutton[playerB.units[i].getPos_x()][playerB.units[i].getPos_y()].unitInside =playerB.units[i];
+            System.out.println(playerA.units[i].name +"의 : pos_x = " + playerA.units[i].getPos_x() + ", pos_y = " + playerA.units[i].getPos_y());
+            System.out.println(playerB.units[i].name +"의 : pos_x = " + playerB.units[i].getPos_x() + ", pos_y = " + playerB.units[i].getPos_y());
         }
 
         new Thread() {
@@ -179,44 +181,44 @@ public class Game extends AppCompatActivity {
 
     }
 
-    Boolean Movement(Unit Selected, int pos_x, int pos_y) {
-        int cur_x = Selected.getPos_x();
-        int cur_y = Selected.getPos_y();
-
-        switch (Selected.name) {
-            case "Horse":
-                if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
-                else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
-                else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
-                else if (pos_x - cur_x == 2 && pos_y - cur_y == -1) return true;
-                else if (pos_x - cur_x == 1 && pos_y - cur_y == -2) return true;
-                else if (pos_x - cur_x == -1 && pos_y - cur_y == -2) return true;
-                else if (pos_x - cur_x == -2 && pos_y - cur_y == -1) return true;
-                else if (pos_x - cur_x == -2 && pos_y - cur_y == 1) return true;
-                else return false;
-            case "Queen":
-                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) return true;
-                else return false;
-            case "King":
-                if((cur_x != pos_x) && (cur_y != pos_y)) return false;
-                else {
-                    if(Math.abs(cur_x - pos_x) > 1) return false;
-                    else if(Math.abs(cur_y - pos_y) > 1) return false;
-                    else return true;
-                }
-            case "Ghost":
-            case "Car":
-                // y값이 같을떄:
-                if(cur_y == pos_y) {
-                    if(Math.abs(cur_x - pos_x) <= 3) return true;
-                    else return false;
-                }else {
-                    if(cur_x != pos_x) return false;
-                    else if(Math.abs(cur_y - pos_y) <= 1) return true;
-                    else return false;
-                }
-        }
-    }
+//    Boolean Movement(Unit Selected, int pos_x, int pos_y) {
+//        int cur_x = Selected.getPos_x();
+//        int cur_y = Selected.getPos_y();
+//
+//        switch (Selected.name) {
+//            case "Horse":
+//                if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
+//                else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
+//                else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
+//                else if (pos_x - cur_x == 2 && pos_y - cur_y == -1) return true;
+//                else if (pos_x - cur_x == 1 && pos_y - cur_y == -2) return true;
+//                else if (pos_x - cur_x == -1 && pos_y - cur_y == -2) return true;
+//                else if (pos_x - cur_x == -2 && pos_y - cur_y == -1) return true;
+//                else if (pos_x - cur_x == -2 && pos_y - cur_y == 1) return true;
+//                else return false;
+//            case "Queen":
+//                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) return true;
+//                else return false;
+//            case "King":
+//                if((cur_x != pos_x) && (cur_y != pos_y)) return false;
+//                else {
+//                    if(Math.abs(cur_x - pos_x) > 1) return false;
+//                    else if(Math.abs(cur_y - pos_y) > 1) return false;
+//                    else return true;
+//                }
+//            case "Ghost":
+//            case "Car":
+//                // y값이 같을떄:
+//                if(cur_y == pos_y) {
+//                    if(Math.abs(cur_x - pos_x) <= 3) return true;
+//                    else return false;
+//                }else {
+//                    if(cur_x != pos_x) return false;
+//                    else if(Math.abs(cur_y - pos_y) <= 1) return true;
+//                    else return false;
+//                }
+//        }
+//    }
 
     void chessEngine(Player playerA, Player playerB) {
         while(IsGameEnd(playerA, playerB) == false) {

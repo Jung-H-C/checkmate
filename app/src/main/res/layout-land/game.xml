@@ -87,9 +87,7 @@
             android:id="@+id/Button_3_3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/board_button"
-            app:layout_column="3"
-            app:layout_row="0" />
+            android:src="@drawable/board_button" />
 
         <ImageButton
             android:id="@+id/Button_4_3"
