@@ -31,7 +31,7 @@ public class Game extends AppCompatActivity {
     Player playerA = null;
     Player playerB = null;
 
-    Unit SelectedUnit;
+    Unit SelectedUnit = new Unit();
 
     ImageButton button[][] = new ImageButton[8][5];
     ImageButton Controller_A_0_0, Controller_A_1_0, Controller_A_0_1, Controller_A_1_1, Controller_A_king;
@@ -171,6 +171,8 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(!boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.green_boardbutton);
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerA.units[3];
@@ -293,7 +295,7 @@ public class Game extends AppCompatActivity {
                                     // 이동 가능한 버튼
                                     if(!boardbutton[x][y].IsOccupied()) {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                    }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
                                     }
                                     button[x][y].setClickable(true);
@@ -324,8 +326,10 @@ public class Game extends AppCompatActivity {
                                     // 이동 가능한 버튼
                                     if(!boardbutton[x][y].IsOccupied()) {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                    }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.green_boardbutton);
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerB.units[3];
@@ -355,7 +359,7 @@ public class Game extends AppCompatActivity {
                                     // 이동 가능한 버튼
                                     if(!boardbutton[x][y].IsOccupied()) {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                    }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
                                     }
                                     button[x][y].setClickable(true);
@@ -386,7 +390,7 @@ public class Game extends AppCompatActivity {
                                     // 이동 가능한 버튼
                                     if(!boardbutton[x][y].IsOccupied()) {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                    }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
                                     }
                                     button[x][y].setClickable(true);
@@ -417,7 +421,7 @@ public class Game extends AppCompatActivity {
                                     // 이동 가능한 버튼
                                     if(!boardbutton[x][y].IsOccupied()) {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
-                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                    }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
                                     }
                                     button[x][y].setClickable(true);
@@ -476,12 +480,14 @@ public class Game extends AppCompatActivity {
 
                                 boardbutton[temp_x][temp_y].unitInside = tempUnit;
                                 if (teamflag) {
-                                    playerA.units[tempUnit.returnUnitCode()].setPos(temp_x, temp_y);
+                                    playerA.units[boardbutton[temp_x][temp_y].unitInside.returnUnitCode()].setPos(temp_x, temp_y);
+                                    System.out.println("디버깅A");
                                 } else
-                                    playerB.units[tempUnit.returnUnitCode()].setPos(temp_x, temp_y);
-
+                                    playerB.units[boardbutton[temp_x][temp_y].unitInside.returnUnitCode()].setPos(temp_x, temp_y);
+                                    System.out.println("디버깅B");
                             }
                         } else {
+                            // 빈 곳으로
                             boardbutton[finalX][finalY].unitInside = SelectedUnit;
                             if (teamflag) {
                                 boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
@@ -498,9 +504,11 @@ public class Game extends AppCompatActivity {
 //                            boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
 //                            playerB.units[unitCode].setPos(finalX, finalY);
 //                        }
+                        }
                             new Thread() {
                                 //UI 출력
                                 public void run() {
+                                    System.out.println("ui thread실행");
                                     Context c = getApplicationContext();
                                     int id;
                                     for (int x = 0; x < 8; x++) {
@@ -516,7 +524,6 @@ public class Game extends AppCompatActivity {
                             if (teamflag) teamflag = false;
                             else teamflag = true;
                         }
-                    }
                 });
             }
         }
