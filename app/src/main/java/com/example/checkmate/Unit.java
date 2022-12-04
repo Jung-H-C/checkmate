@@ -10,9 +10,9 @@ public class Unit implements Serializable {
 
     int pos_x; // (y, x) 순서쌍 좌표계로 board 형성, x: 0~7
     int pos_y; // y: 0~4
-    boolean flag; // true: A팀, false: B팀
+    boolean flag = true; // true: A팀, false: B팀
     boolean isDead = false; // 유닛이 죽었는지 확인. 죽으면 true
-//    boolean isKing = false;
+    boolean isKing = false;
     boolean isSelected = false;
 
     public Unit() {
@@ -30,6 +30,18 @@ public class Unit implements Serializable {
 
     public String getName() {
         return name;
+    }
+
+    public int returnUnitCode() {
+        switch (this.name) {
+            case "Horse": return 0;
+            case "Queen": return 1;
+            case "King": return 2;
+            case "Ghost": return 3;
+            case "Car": return 4;
+        }
+        System.out.println("returnUnitCode에서 오류가 발생했습니다.");
+        return 2;
     }
 
     public void setName(String name) {

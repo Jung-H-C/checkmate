@@ -33,7 +33,7 @@ public class Player implements Serializable {
 
     public void setUnitStatus(String name, int no, boolean flag) {
         // no는 해당 말의 초기 위치
-        if (flag == true) { // A팀 일때,
+        if (flag) { // A팀 일때,
             units[no] = new Unit(no, 0, name, true);
         }
         else {

@@ -132,15 +132,76 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (teamflag) {
-                    // 만약 해당 유닛이 죽어있으면 취소
-                    if(!playerA.units[4].isDead) {
+                    // playerA 차례면
+                    if(playerA.units[4].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
                         Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
                     }else {
-
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerA.units[4], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerA.units[4];
+                                }
+                            }
+                        }
                     }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
+
+        for(int x = 0; x<8; x++) {
+            for (int y = 0; y<5; y++) {
+                int finalX = x;
+                int finalY = y;
+                button[x][y].setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        int unitCode = SelectedUnit.returnUnitCode();
+
+                        if(boardbutton[finalX][finalY].IsOccupied()) {
+                            //상대 말 잡을때
+                            if (boardbutton[finalX][finalY].unitInside.flag) playerA.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].isDead = true;
+                            else playerB.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].isDead = true;
+                        }
+                        boardbutton[finalX][finalY].unitInside = SelectedUnit;
+                        if(teamflag) {
+                            boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
+                            playerA.units[unitCode].setPos(finalX, finalY);
+                        }else {
+                            boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
+                            playerB.units[unitCode].setPos(finalX, finalY);
+                        }
+                        new Thread() {
+                            //UI 출력
+                            public void run() {
+                                Context c = getApplicationContext();
+                                int id;
+                                for(int x = 0; x<8; x++) {
+                                    for (int y = 0; y<5; y++) {
+                                            id = c.getResources().getIdentifier(boardbutton[x][y].get_img_src(), null, c.getPackageName());
+                                            button[x][y].setImageResource(id);
+                                            button[x][y].setClickable(false);
+                                    }
+                                }
+                            }
+                        }.start();
+                        //차례 변경
+                        if(teamflag) teamflag = false;
+                        else teamflag = true;
+                    }
+                });
+            }
+        }
 
 //       mHandler = new Handler() {
 //            @Override
@@ -180,45 +241,63 @@ public class Game extends AppCompatActivity {
 
 
     }
+    // Selected 유닛이 (pos_x, pos_y)로 이동할 수 있는지 boolean return 함수
+    Boolean Movement(Unit Selected, int pos_x, int pos_y) {
+        // (cur_x, cur_y): Selected유닛의 현재 위치
+        int cur_x = Selected.getPos_x();
+        int cur_y = Selected.getPos_y();
 
-//    Boolean Movement(Unit Selected, int pos_x, int pos_y) {
-//        int cur_x = Selected.getPos_x();
-//        int cur_y = Selected.getPos_y();
-//
-//        switch (Selected.name) {
-//            case "Horse":
-//                if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
-//                else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
-//                else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
-//                else if (pos_x - cur_x == 2 && pos_y - cur_y == -1) return true;
-//                else if (pos_x - cur_x == 1 && pos_y - cur_y == -2) return true;
-//                else if (pos_x - cur_x == -1 && pos_y - cur_y == -2) return true;
-//                else if (pos_x - cur_x == -2 && pos_y - cur_y == -1) return true;
-//                else if (pos_x - cur_x == -2 && pos_y - cur_y == 1) return true;
-//                else return false;
-//            case "Queen":
-//                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) return true;
-//                else return false;
-//            case "King":
-//                if((cur_x != pos_x) && (cur_y != pos_y)) return false;
-//                else {
-//                    if(Math.abs(cur_x - pos_x) > 1) return false;
-//                    else if(Math.abs(cur_y - pos_y) > 1) return false;
-//                    else return true;
-//                }
-//            case "Ghost":
-//            case "Car":
-//                // y값이 같을떄:
-//                if(cur_y == pos_y) {
-//                    if(Math.abs(cur_x - pos_x) <= 3) return true;
-//                    else return false;
-//                }else {
-//                    if(cur_x != pos_x) return false;
-//                    else if(Math.abs(cur_y - pos_y) <= 1) return true;
-//                    else return false;
-//                }
-//        }
-//    }
+        switch (Selected.name) {
+            case "Horse":
+                if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
+                else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
+                else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
+                else if (pos_x - cur_x == 2 && pos_y - cur_y == -1) return true;
+                else if (pos_x - cur_x == 1 && pos_y - cur_y == -2) return true;
+                else if (pos_x - cur_x == -1 && pos_y - cur_y == -2) return true;
+                else if (pos_x - cur_x == -2 && pos_y - cur_y == -1) return true;
+                else if (pos_x - cur_x == -2 && pos_y - cur_y == 1) return true;
+                else return false;
+            case "Queen":
+                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) return true;
+                else return false;
+            case "King":
+                if((cur_x != pos_x) && (cur_y != pos_y)) return false;
+                else {
+                    if(Math.abs(cur_x - pos_x) > 1) return false;
+                    else if(Math.abs(cur_y - pos_y) > 1) return false;
+                    else return true;
+                }
+            case "Ghost":
+                if((cur_y == pos_y) && (Math.abs(cur_x-pos_x) <= 1)) return true;
+                if(Selected.flag) {
+                    // playerA일떄:
+                    if(!playerA.units[0].isDead && (playerA.units[0].getPos_x() == pos_x && playerA.units[0].getPos_y() == pos_y)) return true;
+                    if(!playerA.units[1].isDead && (playerA.units[1].getPos_x() == pos_x && playerA.units[1].getPos_y() == pos_y)) return true;
+                    if(!playerA.units[2].isDead && (playerA.units[2].getPos_x() == pos_x && playerA.units[2].getPos_y() == pos_y)) return true;
+                    if(!playerA.units[4].isDead && (playerA.units[4].getPos_x() == pos_x && playerA.units[4].getPos_y() == pos_y)) return true;
+                    return false;
+                }else {
+                    // playerB일떄:
+                    if(!playerB.units[0].isDead && (playerB.units[0].getPos_x() == pos_x && playerB.units[0].getPos_y() == pos_y)) return true;
+                    if(!playerB.units[1].isDead && (playerB.units[1].getPos_x() == pos_x && playerB.units[1].getPos_y() == pos_y)) return true;
+                    if(!playerB.units[2].isDead && (playerB.units[2].getPos_x() == pos_x && playerB.units[2].getPos_y() == pos_y)) return true;
+                    if(!playerB.units[4].isDead && (playerB.units[4].getPos_x() == pos_x && playerB.units[4].getPos_y() == pos_y)) return true;
+                    return false;
+                }
+            case "Car":
+                // y값이 같을떄:
+                if(cur_y == pos_y) {
+                    if(Math.abs(cur_x - pos_x) <= 3) return true;
+                    else return false;
+                }else {
+                    if(cur_x != pos_x) return false;
+                    else if(Math.abs(cur_y - pos_y) <= 1) return true;
+                    else return false;
+                }
+        }
+        return false;
+    }
 
     void chessEngine(Player playerA, Player playerB) {
         while(IsGameEnd(playerA, playerB) == false) {
