@@ -27,7 +27,6 @@ public class Game extends AppCompatActivity {
     ImageView a_profile, b_profile;
     TextView tv_profile_A, tv_profile_B;
 
-
     // intent로 부터 불러올 player 객체
     Player playerA = null;
     Player playerB = null;
@@ -35,8 +34,8 @@ public class Game extends AppCompatActivity {
     Unit SelectedUnit;
 
     ImageButton button[][] = new ImageButton[8][5];
-    ImageButton Controller_A_0_0, Controller_A_1_0, Controller_A_0_1, Controller_A_1_1;
-    ImageButton Controller_B_0_0, Controller_B_1_0, Controller_B_0_1, Controller_B_1_1;
+    ImageButton Controller_A_0_0, Controller_A_1_0, Controller_A_0_1, Controller_A_1_1, Controller_A_king;
+    ImageButton Controller_B_0_0, Controller_B_1_0, Controller_B_0_1, Controller_B_1_1, Controller_B_king;
     Integer[][] Rid_button = {
             {R.id.Button_0_0, R.id.Button_0_1, R.id.Button_0_2, R.id.Button_0_3,
                     R.id.Button_0_4}, {R.id.Button_1_0, R.id.Button_1_1, R.id.Button_1_2,
@@ -49,13 +48,6 @@ public class Game extends AppCompatActivity {
             R.id.Button_7_3, R.id.Button_7_4}};
 
     Board boardbutton[][] = new Board[8][5];
-
-    class UI_Thread extends Thread {
-        public void run() {
-
-        }
-    }
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,10 +71,12 @@ public class Game extends AppCompatActivity {
         Controller_A_1_0 = (ImageButton) findViewById(R.id.Controller_A_1_0);
         Controller_A_0_1 = (ImageButton) findViewById(R.id.Controller_A_0_1);
         Controller_A_1_1 = (ImageButton) findViewById(R.id.Controller_A_1_1);
+        Controller_A_king = (ImageButton) findViewById(R.id.Controller_A_king);
         Controller_B_0_0 = (ImageButton) findViewById(R.id.Controller_B_0_0);
         Controller_B_1_0 = (ImageButton) findViewById(R.id.Controller_B_1_0);
         Controller_B_0_1 = (ImageButton) findViewById(R.id.Controller_B_0_1);
         Controller_B_1_1 = (ImageButton) findViewById(R.id.Controller_B_1_1);
+        Controller_B_king = (ImageButton) findViewById(R.id.Controller_B_king);
 
         // imageButton 선언
         for (int x = 0; x<8; x++) {
@@ -133,6 +127,7 @@ public class Game extends AppCompatActivity {
             public void onClick(View view) {
                 if (teamflag) {
                     // playerA 차례면
+                    ButtonAllInitialize();
                     if(playerA.units[4].isDead) {
                         // 만약 해당 유닛이 죽어있으면 취소
                         Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
@@ -158,6 +153,286 @@ public class Game extends AppCompatActivity {
 
             }
         });
+        Controller_A_0_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerA.units[3].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerA.units[3], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerA.units[3];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_A_0_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerA.units[0].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerA.units[0], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerA.units[0];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_A_1_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerA.units[1].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerA.units[1], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerA.units[1];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_A_king.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerA.units[2].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerA.units[2], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerA.units[2];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_B_1_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerB.units[4].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerB.units[4], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerB.units[4];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_B_0_0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerB.units[3].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerB.units[3], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerB.units[3];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_B_0_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerB.units[0].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerB.units[0], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerB.units[0];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_B_1_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerB.units[1].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerB.units[1], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerB.units[1];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+        Controller_B_king.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!teamflag) {
+                    // playerA 차례면
+                    ButtonAllInitialize();
+                    if(playerB.units[2].isDead) {
+                        // 만약 해당 유닛이 죽어있으면 취소
+                        Toast.makeText(Game.this, "다른 유닛을 선택하세요!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        for(int x = 0; x<8; x++) {
+                            for(int y = 0; y<5; y++) {
+                                if(Movement(playerB.units[2], x, y)) {
+                                    // 이동 가능한 버튼
+                                    if(!boardbutton[x][y].IsOccupied()) {
+                                        button[x][y].setImageResource(R.drawable.yellow_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag){
+                                        button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }
+                                    button[x][y].setClickable(true);
+                                    SelectedUnit = playerB.units[2];
+                                }
+                            }
+                        }
+                    }
+                }else {
+                    Toast.makeText(Game.this, "상대 차례입니다!", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
         for(int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
@@ -168,36 +443,79 @@ public class Game extends AppCompatActivity {
                     public void onClick(View view) {
                         int unitCode = SelectedUnit.returnUnitCode();
 
-                        if(boardbutton[finalX][finalY].IsOccupied()) {
-                            //상대 말 잡을때
-                            if (boardbutton[finalX][finalY].unitInside.flag) playerA.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].isDead = true;
-                            else playerB.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].isDead = true;
-                        }
-                        boardbutton[finalX][finalY].unitInside = SelectedUnit;
-                        if(teamflag) {
-                            boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
-                            playerA.units[unitCode].setPos(finalX, finalY);
-                        }else {
-                            boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
-                            playerB.units[unitCode].setPos(finalX, finalY);
-                        }
-                        new Thread() {
-                            //UI 출력
-                            public void run() {
-                                Context c = getApplicationContext();
-                                int id;
-                                for(int x = 0; x<8; x++) {
-                                    for (int y = 0; y<5; y++) {
+                        // 말위치로 이동
+                        if (boardbutton[finalX][finalY].IsOccupied()) {
+                            if (boardbutton[finalX][finalY].unitInside.flag != teamflag) {
+                                //상대 말 잡을때
+                                if (boardbutton[finalX][finalY].unitInside.flag)
+                                    playerA.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].isDead = true;
+                                else
+                                    playerB.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].isDead = true;
+
+                                boardbutton[finalX][finalY].unitInside = SelectedUnit;
+                                if (teamflag) {
+                                    boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
+                                    playerA.units[unitCode].setPos(finalX, finalY);
+                                } else {
+                                    boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
+                                    playerB.units[unitCode].setPos(finalX, finalY);
+                                }
+                            } else {
+                                //ghost movement
+                                Unit tempUnit;
+                                int temp_x, temp_y;
+                                tempUnit = boardbutton[finalX][finalY].unitInside;
+                                temp_x = SelectedUnit.getPos_x();
+                                temp_y = SelectedUnit.getPos_y();
+
+                                boardbutton[finalX][finalY].unitInside = SelectedUnit;
+                                if (teamflag) {
+                                    playerA.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].setPos(finalX, finalY);
+                                } else
+                                    playerB.units[boardbutton[finalX][finalY].unitInside.returnUnitCode()].setPos(finalX, finalY);
+
+                                boardbutton[temp_x][temp_y].unitInside = tempUnit;
+                                if (teamflag) {
+                                    playerA.units[tempUnit.returnUnitCode()].setPos(temp_x, temp_y);
+                                } else
+                                    playerB.units[tempUnit.returnUnitCode()].setPos(temp_x, temp_y);
+
+                            }
+                        } else {
+                            boardbutton[finalX][finalY].unitInside = SelectedUnit;
+                            if (teamflag) {
+                                boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
+                                playerA.units[unitCode].setPos(finalX, finalY);
+                            } else {
+                                boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
+                                playerB.units[unitCode].setPos(finalX, finalY);
+                            }
+//                        boardbutton[finalX][finalY].unitInside = SelectedUnit;
+//                        if (teamflag) {
+//                            boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
+//                            playerA.units[unitCode].setPos(finalX, finalY);
+//                        } else {
+//                            boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
+//                            playerB.units[unitCode].setPos(finalX, finalY);
+//                        }
+                            new Thread() {
+                                //UI 출력
+                                public void run() {
+                                    Context c = getApplicationContext();
+                                    int id;
+                                    for (int x = 0; x < 8; x++) {
+                                        for (int y = 0; y < 5; y++) {
                                             id = c.getResources().getIdentifier(boardbutton[x][y].get_img_src(), null, c.getPackageName());
                                             button[x][y].setImageResource(id);
                                             button[x][y].setClickable(false);
+                                        }
                                     }
                                 }
-                            }
-                        }.start();
-                        //차례 변경
-                        if(teamflag) teamflag = false;
-                        else teamflag = true;
+                            }.start();
+                            //차례 변경
+                            if (teamflag) teamflag = false;
+                            else teamflag = true;
+                        }
                     }
                 });
             }
@@ -297,6 +615,18 @@ public class Game extends AppCompatActivity {
                 }
         }
         return false;
+    }
+
+    void ButtonAllInitialize() {
+        Context c = getApplicationContext();
+        int id;
+        for(int x = 0; x<8; x++) {
+            for (int y = 0; y<5; y++) {
+                button[x][y].setClickable(false);
+                id = c.getResources().getIdentifier(boardbutton[x][y].get_img_src(), null, c.getPackageName());
+                button[x][y].setImageResource(id);
+            }
+        }
     }
 
     void chessEngine(Player playerA, Player playerB) {
