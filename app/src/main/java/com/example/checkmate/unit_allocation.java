@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -14,13 +15,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class unit_allocation extends AppCompatActivity {
 
-//    Player playerA = null;
-//    Player playerB = null;
-
+    Player playerA, playerB;
     Unit SelectedUnit = null;
 
     Board alloc_boardbutton[][] = new Board[4][5];
 
+    ImageView alloc_A_profile, alloc_B_profile;
     ImageButton alloc_controller_A_0_0, alloc_controller_A_0_1, alloc_controller_A_1_0, alloc_controller_A_1_1;
     ImageButton alloc_controller_B_0_0, alloc_controller_B_0_1, alloc_controller_B_1_0, alloc_controller_B_1_1;
 
@@ -44,15 +44,14 @@ public class unit_allocation extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.unit_allocation);
 
-//        Intent intent = getIntent();
-//        Player player1 = (Player) intent.getSerializableExtra("playerA");
-//        Player player2 = (Player) intent.getSerializableExtra("playerB");
-//
-//        playerA = player1;
-//        playerB = player2;
+        Intent intent = getIntent();
+        Player player1 = (Player) intent.getSerializableExtra("playerA");
+        Player player2 = (Player) intent.getSerializableExtra("playerB");
 
-        Player playerA = new Player("junghc", "kasjdklasjdklasd");
-        Player playerB = new Player("xotourllife", "kasjdklasjdklasd");
+        playerA = player1;
+        playerB = player2;
+
+
 
         for (int x = 0; x<4; x++) {
             for (int y = 0; y<5; y++) {
@@ -71,9 +70,16 @@ public class unit_allocation extends AppCompatActivity {
         btn_to_game = (ImageButton) findViewById(R.id.imageButton64);
         btn_to_menu= (Button) findViewById(R.id.btn_to_mainmenu);
 
+        alloc_A_profile = (ImageView) findViewById(R.id.alloc_A_profile);
+        alloc_B_profile = (ImageView) findViewById(R.id.alloc_B_profile);
 
+//        BaseSetting(playerA, playerB);
+        alloc_boardbutton[0][2].unitInside = playerA.units[2];
+        alloc_boardbutton[3][2].unitInside = playerB.units[2];
 
-        BaseSetting(playerA, playerB);
+        alloc_A_profile.setImageBitmap(playerA.profile_image);
+        alloc_B_profile.setImageBitmap(playerB.profile_image);
+
         btn_to_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -238,10 +244,10 @@ public class unit_allocation extends AppCompatActivity {
     void BaseSetting(Player playerA, Player playerB) {
 
         playerA.units[2].flag = true;
-        playerA.units[2].setImg_src("drawable/king");
+        playerA.units[2].setImg_src("drawable/king_a");
         playerA.units[2].setPos(0, 2);
         playerB.units[2].flag = false;
-        playerB.units[2].setImg_src("drawable/king");
+        playerB.units[2].setImg_src("drawable/king_b");
         playerB.units[2].setPos(7, 2);
         alloc_boardbutton[0][2].unitInside = playerA.units[2];
         alloc_boardbutton[3][2].unitInside = playerB.units[2];
@@ -255,14 +261,19 @@ public class unit_allocation extends AppCompatActivity {
         playerB.units[3].flag = false;
         playerB.units[4].flag = false;
 
-        playerA.units[0].setImg_src("drawable/horse");
-        playerA.units[1].setImg_src("drawable/queen");
-        playerA.units[3].setImg_src("drawable/ghost");
-        playerA.units[4].setImg_src("drawable/car");
-        playerB.units[0].setImg_src("drawable/horse");
-        playerB.units[1].setImg_src("drawable/queen");
-        playerB.units[3].setImg_src("drawable/ghost");
-        playerB.units[4].setImg_src("drawable/car");
+        playerA.units[0].setImg_src("drawable/horse_a");
+        playerA.units[1].setImg_src("drawable/queen_a");
+        playerA.units[3].setImg_src("drawable/ghost_a");
+        playerA.units[4].setImg_src("drawable/car_a");
+        playerB.units[0].setImg_src("drawable/horse_b");
+        playerB.units[1].setImg_src("drawable/queen_b");
+        playerB.units[3].setImg_src("drawable/ghost_b");
+        playerB.units[4].setImg_src("drawable/car_b");
+
+        playerB.units[0].setImg_src("@drawable/horse_b");
+        playerB.units[1].setImg_src("@drawable/queen_b");
+        playerB.units[3].setImg_src("@drawable/ghost_b");
+        playerB.units[4].setImg_src("@drawable/car_b");
     }
 
     Boolean ChecksIfSelected(Unit Selected) {

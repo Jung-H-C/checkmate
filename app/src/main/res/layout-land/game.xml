@@ -285,13 +285,13 @@
                 android:id="@+id/Controller_A_0_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/horse" />
+                android:src="@drawable/horse_a" />
 
             <ImageButton
                 android:id="@+id/Controller_A_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/queen" />
+                android:src="@drawable/queen_a" />
         </TableRow>
 
         <TableRow
@@ -302,13 +302,13 @@
                 android:id="@+id/Controller_A_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ghost" />
+                android:src="@drawable/ghost_a" />
 
             <ImageButton
                 android:id="@+id/Controller_A_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/car" />
+                android:src="@drawable/car_a" />
         </TableRow>
 
     </TableLayout>
@@ -330,13 +330,13 @@
                 android:id="@+id/Controller_B_0_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/horse" />
+                android:src="@drawable/horse_b" />
 
             <ImageButton
                 android:id="@+id/Controller_B_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/queen" />
+                android:src="@drawable/queen_b" />
         </TableRow>
 
         <TableRow
@@ -347,13 +347,13 @@
                 android:id="@+id/Controller_B_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/ghost" />
+                android:src="@drawable/ghost_b" />
 
             <ImageButton
                 android:id="@+id/Controller_B_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/car" />
+                android:src="@drawable/car_b" />
         </TableRow>
 
     </TableLayout>
@@ -410,7 +410,7 @@
         app:layout_constraintEnd_toStartOf="@+id/gridLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/king" />
+        app:srcCompat="@drawable/king_a" />
 
     <ImageButton
         android:id="@+id/Controller_B_king"
@@ -420,5 +420,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/gridLayout"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/king" />
+        app:srcCompat="@drawable/king_b" />
 </androidx.constraintlayout.widget.ConstraintLayout>

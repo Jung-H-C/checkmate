@@ -56,13 +56,13 @@
                 android:id="@+id/alloc_controller_A_0_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/horse" />
+                app:srcCompat="@drawable/horse_a" />
 
             <ImageButton
                 android:id="@+id/alloc_controller_A_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/queen" />
+                app:srcCompat="@drawable/queen_a" />
         </TableRow>
 
         <TableRow
@@ -74,14 +74,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/ghost" />
+                app:srcCompat="@drawable/ghost_a" />
 
             <ImageButton
                 android:id="@+id/alloc_controller_A_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:scaleType="fitXY"
-                app:srcCompat="@drawable/car" />
+                app:srcCompat="@drawable/car_a" />
         </TableRow>
 
     </TableLayout>
@@ -103,13 +103,13 @@
                 android:id="@+id/alloc_controller_B_0_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/horse" />
+                app:srcCompat="@drawable/horse_b" />
 
             <ImageButton
                 android:id="@+id/alloc_controller_B_1_1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/queen" />
+                app:srcCompat="@drawable/queen_b" />
         </TableRow>
 
         <TableRow
@@ -120,13 +120,13 @@
                 android:id="@+id/alloc_controller_B_0_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/ghost" />
+                app:srcCompat="@drawable/ghost_b" />
 
             <ImageButton
                 android:id="@+id/alloc_controller_B_1_0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:srcCompat="@drawable/car" />
+                app:srcCompat="@drawable/car_b" />
         </TableRow>
 
     </TableLayout>
@@ -216,7 +216,7 @@
             android:id="@+id/alloc_Button_0_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/king" />
+            app:srcCompat="@drawable/king_a" />
 
         <ImageButton
             android:id="@+id/alloc_Button_1_2"
@@ -242,7 +242,7 @@
             android:id="@+id/alloc_Button_7_2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/king" />
+            app:srcCompat="@drawable/king_b" />
 
         <ImageButton
             android:id="@+id/alloc_Button_0_1"

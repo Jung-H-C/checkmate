@@ -8,14 +8,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Button" />
+        android:layout_height="80dp">
 
     </LinearLayout>
 
@@ -39,8 +32,8 @@
                     android:layout_height="83dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_gallery"
-                    tools:layout_editor_absoluteY="39dp" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
 
                 <ImageButton
                     android:id="@+id/settings_img_set_a"
@@ -48,8 +41,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_camera"
-                    tools:layout_editor_absoluteY="122dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/settings_img_profile_a"
+                    app:srcCompat="@android:drawable/ic_menu_camera" />
 
                 <TextView
                     android:id="@+id/settings_tv_profile_a"
@@ -60,16 +53,21 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="174dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/settings_img_set_a" />
 
                 <Button
                     android:id="@+id/btn_playerA_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="120dp"
+                    android:minWidth="30dip"
+                    android:minHeight="36dip"
+                    android:padding="1dp"
                     android:text="이름 변경"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="193dp" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
@@ -91,8 +89,19 @@
                     android:background="@drawable/button_shape_2"
                     android:text="메인 메뉴로"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:layout_editor_absoluteX="92dp" />
+                    app:layout_constraintVertical_bias="0.449" />
+
+                <CheckBox
+                    android:id="@+id/checkBox_bgm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="효과음"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/settings_to_main_menu" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
@@ -113,8 +122,8 @@
                     android:layout_height="83dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_gallery"
-                    tools:layout_editor_absoluteY="39dp" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@android:drawable/ic_menu_gallery" />
 
                 <ImageButton
                     android:id="@+id/settings_img_set_b"
@@ -122,8 +131,8 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:srcCompat="@android:drawable/ic_menu_camera"
-                    tools:layout_editor_absoluteY="122dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/settings_img_profile_b"
+                    app:srcCompat="@android:drawable/ic_menu_camera" />
 
                 <TextView
                     android:id="@+id/settings_tv_profile_b"
@@ -134,18 +143,24 @@
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="174dp" />
+                    app:layout_constraintTop_toBottomOf="@+id/settings_img_set_b" />
 
                 <Button
                     android:id="@+id/btn_playerB_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="120dp"
+                    android:minWidth="30dip"
+                    android:minHeight="36dip"
+                    android:padding="1dp"
                     android:text="이름 변경"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    tools:layout_editor_absoluteY="193dp" />
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
 
     </LinearLayout>
+
 </LinearLayout>

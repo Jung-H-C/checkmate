@@ -20,17 +20,46 @@ import android.widget.Button;
 // 어댑터뷰 chapter.11 강의 다시 들어봐야할듯
 public class MainActivity extends AppCompatActivity {
 
+    Button game_start, go_to_setting, go_to_tutorial;
+    Player playerA, playerB;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
 
-        Button test_button = (Button) findViewById(R.id.btn_to_board_setting);
-        test_button.setOnClickListener(new View.OnClickListener() {
+        Intent intent = getIntent();
+        Player player1 = (Player) intent.getSerializableExtra("playerA");
+        Player player2 = (Player) intent.getSerializableExtra("playerB");
+
+        playerA = player1;
+        playerB = player2;
+
+        game_start = (Button) findViewById(R.id.btn_to_board_setting);
+        go_to_setting = (Button) findViewById(R.id.btn_to_setting);
+        go_to_tutorial = (Button) findViewById(R.id.btn_to_tutorials);
+
+        game_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), unit_allocation.class);
+                intent.putExtra("playerA", playerA);
+                intent.putExtra("playerA", playerB);
+                startActivity(intent);
+            }
+        });
+        go_to_setting.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), settings.class);
+                startActivity(intent);
+            }
+        });
+        go_to_tutorial.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), tutorials.class);
                 startActivity(intent);
             }
         });

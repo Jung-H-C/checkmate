@@ -203,7 +203,12 @@ public class Game extends AppCompatActivity {
                                     if(!boardbutton[x][y].IsOccupied()) {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(!boardbutton[x][y].unitInside.flag){
+                                        //상대팀
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerA.units[0];
@@ -235,6 +240,10 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(!boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerA.units[1];
@@ -266,6 +275,10 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(!boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerA.units[2];
@@ -297,6 +310,10 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerB.units[4];
@@ -361,6 +378,10 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerB.units[0];
@@ -392,6 +413,10 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerB.units[1];
@@ -423,6 +448,10 @@ public class Game extends AppCompatActivity {
                                         button[x][y].setImageResource(R.drawable.yellow_boardbutton);
                                     }else if(boardbutton[x][y].unitInside.flag){
                                         button[x][y].setImageResource(R.drawable.red_boardbutton);
+                                    }else if(!boardbutton[x][y].unitInside.flag) {
+                                        //우리팀
+                                        button[x][y].setClickable(false);
+                                        continue;
                                     }
                                     button[x][y].setClickable(true);
                                     SelectedUnit = playerB.units[2];
