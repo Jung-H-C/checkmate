@@ -43,6 +43,7 @@ public class unit_allocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.unit_allocation);
+        System.out.println("디버깅:unit_allocation:onCreate발생!");
 
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
@@ -51,6 +52,12 @@ public class unit_allocation extends AppCompatActivity {
         playerA = player1;
         playerB = player2;
 
+        if(playerA == null && playerB == null) {
+            System.out.println("디버깅:unit_allocation:동기화 안됨!");
+            BaseSetting(playerA, playerB);
+        }else {
+            System.out.println("디버깅:" + playerA.units[0].img_src);
+        }
 
 
         for (int x = 0; x<4; x++) {
@@ -73,7 +80,7 @@ public class unit_allocation extends AppCompatActivity {
         alloc_A_profile = (ImageView) findViewById(R.id.alloc_A_profile);
         alloc_B_profile = (ImageView) findViewById(R.id.alloc_B_profile);
 
-//        BaseSetting(playerA, playerB);
+
         alloc_boardbutton[0][2].unitInside = playerA.units[2];
         alloc_boardbutton[3][2].unitInside = playerB.units[2];
 

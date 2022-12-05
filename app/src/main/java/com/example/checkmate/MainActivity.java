@@ -28,11 +28,19 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
+        System.out.println("디버깅:메인액티비티 onCreate발생!");
 
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
 
+        if(player1 != null && player2 != null) {
+            System.out.println("디버깅:intent로 player 동기화됨!");
+        }else {
+            System.out.println("디버깅:동기화 안됨!");
+            player1 = new Player();
+            player2 = new Player();
+        }
         playerA = player1;
         playerB = player2;
 
@@ -45,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), unit_allocation.class);
                 intent.putExtra("playerA", playerA);
-                intent.putExtra("playerA", playerB);
+                intent.putExtra("playerB", playerB);
                 startActivity(intent);
             }
         });

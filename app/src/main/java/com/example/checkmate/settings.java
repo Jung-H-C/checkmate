@@ -54,6 +54,10 @@ public class settings extends AppCompatActivity {
         playerB = new Player();
         BaseSetting(playerA, playerB);
 
+        if(playerA.units[1].img_src == "drawable/queen_a") {
+            System.out.println("intent로 잘 불러와졌음!");
+        }
+
         btn_to_main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
