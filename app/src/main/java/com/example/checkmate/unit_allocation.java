@@ -2,7 +2,13 @@ package com.example.checkmate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.ImageDecoder;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -13,10 +19,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.IOException;
+
 public class unit_allocation extends AppCompatActivity {
 
     Player playerA, playerB;
+    byte[] byteArray_A, byteArray_B;
     Unit SelectedUnit = null;
+    Uri uri_a, uri_b;
 
     Board alloc_boardbutton[][] = new Board[4][5];
 
@@ -48,6 +58,13 @@ public class unit_allocation extends AppCompatActivity {
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
+        uri_a = intent.getParcelableExtra("playerA_uri");
+        uri_b = intent.getParcelableExtra("playerB_uri");
+
+//        byteArray_A = intent.getByteArrayExtra("A_profile");
+//        byteArray_B = intent.getByteArrayExtra("B_profile");
+//        Bitmap bitmap_A = BitmapFactory.decodeByteArray(byteArray_A, 0, byteArray_A.length);
+//        Bitmap bitmap_B = BitmapFactory.decodeByteArray(byteArray_B, 0, byteArray_B.length);
 
         playerA = player1;
         playerB = player2;
@@ -79,13 +96,23 @@ public class unit_allocation extends AppCompatActivity {
 
         alloc_A_profile = (ImageView) findViewById(R.id.alloc_A_profile);
         alloc_B_profile = (ImageView) findViewById(R.id.alloc_B_profile);
+        try {
+            Bitmap bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
+            alloc_A_profile.setImageBitmap(bitmap_a);
+            Bitmap bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
+            alloc_B_profile.setImageBitmap(bitmap_b);
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+//        alloc_A_profile.setImageBitmap(bitmap_A);
+//        alloc_B_profile.setImageBitmap(bitmap_B);
 
         alloc_boardbutton[0][2].unitInside = playerA.units[2];
         alloc_boardbutton[3][2].unitInside = playerB.units[2];
-
-        alloc_A_profile.setImageBitmap(playerA.profile_image);
-        alloc_B_profile.setImageBitmap(playerB.profile_image);
+//        alloc_A_profile.setImageBitmap(playerA.profile_image);
+//        alloc_B_profile.setImageBitmap(playerB.profile_image);
 
         btn_to_menu.setOnClickListener(new View.OnClickListener() {
             @Override

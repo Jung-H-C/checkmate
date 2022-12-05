@@ -3,6 +3,7 @@ package com.example.checkmate;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -22,6 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button game_start, go_to_setting, go_to_tutorial;
     Player playerA, playerB;
+    byte[] byteArray_A, byteArray_B;
+    Uri uri_a, uri_b;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
+//        byteArray_A = intent.getByteArrayExtra("playerA_profile_img");
+//        byteArray_B = intent.getByteArrayExtra("playerB_profile_img");
+        uri_a = intent.getParcelableExtra("playerA_uri");
+        uri_b = intent.getParcelableExtra("playerB_uri");
 
         if(player1 != null && player2 != null) {
             System.out.println("디버깅:intent로 player 동기화됨!");
@@ -54,6 +61,8 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), unit_allocation.class);
                 intent.putExtra("playerA", playerA);
                 intent.putExtra("playerB", playerB);
+                intent.putExtra("playerA_uri", uri_a);
+                intent.putExtra("playerB_uri", uri_b);
                 startActivity(intent);
             }
         });

@@ -20,12 +20,13 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class settings extends AppCompatActivity {
 
-    Uri uri;
+    Uri uri_a, uri_b;
     Bitmap playerA_profile, playerB_profile;
 
     Button btn_playerA_name, btn_playerB_name, btn_to_main_menu;
@@ -35,11 +36,14 @@ public class settings extends AppCompatActivity {
 
     Player playerA, playerB;
 
+    byte[] byteArray_A, byteArray_B;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.settings);
+
 
         btn_playerA_name = (Button) findViewById(R.id.btn_playerA_name);
         btn_playerB_name = (Button) findViewById(R.id.btn_playerB_name);
@@ -64,6 +68,8 @@ public class settings extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.putExtra("playerA", playerA);
                 intent.putExtra("playerB", playerB);
+                intent.putExtra("playerA_uri", uri_a);
+                intent.putExtra("playerB_uri", uri_b);
                 startActivity(intent);
             }
         });
@@ -91,14 +97,25 @@ public class settings extends AppCompatActivity {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        uri = result.getData().getData();
+                        uri_a = result.getData().getData();
 
                         try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            playerA_profile = bitmap;
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
+//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                            bitmap.compress(Bitmap.CompressFormat.PNG, 1, stream);
+//                            byteArray_A = stream.toByteArray();
+//                            float scale = (float) (1024/(float)bitmap.getWidth());
+//                            int image_w = (int) (bitmap.getWidth() * scale);
+//                            int image_h = (int) (bitmap.getHeight() * scale);
+//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                            Bitmap resize = Bitmap.createScaledBitmap(bitmap, image_w, image_h, true);
+//                            resize.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+////                            만약 오류시 jpeg로 한번더 트라이
+//                            byteArray_A = stream.toByteArray();
+////                            playerA_profile = bitmap;
 
-                            imgview_profile_a.setImageBitmap(playerA_profile);
-                            playerA.profile_image = playerA_profile;
+                            imgview_profile_a.setImageBitmap(bitmap);
+//                            playerA.profile_image = playerA_profile;
 
                         }catch (FileNotFoundException e){
                             e.printStackTrace();
@@ -115,14 +132,25 @@ public class settings extends AppCompatActivity {
                 @Override
                 public void onActivityResult(ActivityResult result) {
                     if (result.getResultCode() == RESULT_OK && result.getData() != null) {
-                        uri = result.getData().getData();
+                        uri_b = result.getData().getData();
 
                         try {
-                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
-                            playerB_profile = bitmap;
-
-                            imgview_profile_b.setImageBitmap(playerB_profile);
-                            playerB.profile_image = playerB_profile;
+                            Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
+//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+//                            byteArray_B = stream.toByteArray();
+//                            float scale = (float) (1024/(float)bitmap.getWidth());
+//                            int image_w = (int) (bitmap.getWidth() * scale);
+//                            int image_h = (int) (bitmap.getHeight() * scale);
+//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+//                            Bitmap resize = Bitmap.createScaledBitmap(bitmap, image_w, image_h, true);
+//                            resize.compress(Bitmap.CompressFormat.PNG, 100, stream);
+////                            만약 오류시 jpeg로 한번더 트라이
+//                            byteArray_B = stream.toByteArray();
+////                            playerB_profile = bitmap;
+//
+                            imgview_profile_b.setImageBitmap(bitmap);
+//                            playerB.profile_image = playerB_profile;
 
                         }catch (FileNotFoundException e){
                             e.printStackTrace();
