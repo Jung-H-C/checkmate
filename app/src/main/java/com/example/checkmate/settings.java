@@ -10,8 +10,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
@@ -32,6 +34,7 @@ public class settings extends AppCompatActivity {
     Button btn_playerA_name, btn_playerB_name, btn_to_main_menu;
     ImageButton Imgbtn_playerA_profile, Imgbtn_playerB_profile;
     ImageView imgview_profile_a, imgview_profile_b;
+    EditText playerA_name, playerB_name;
     CheckBox bgm_on;
 
     Player playerA, playerB;
@@ -48,6 +51,8 @@ public class settings extends AppCompatActivity {
         btn_playerA_name = (Button) findViewById(R.id.btn_playerA_name);
         btn_playerB_name = (Button) findViewById(R.id.btn_playerB_name);
         btn_to_main_menu = (Button) findViewById(R.id.settings_to_main_menu);
+        playerA_name = (EditText) findViewById(R.id.settings_tv_profile_a);
+        playerB_name = (EditText) findViewById(R.id.settings_tv_profile_b);
         imgview_profile_a = (ImageView) findViewById(R.id.settings_img_profile_a);
         imgview_profile_b = (ImageView) findViewById(R.id.settings_img_profile_b);
         Imgbtn_playerA_profile = (ImageButton) findViewById(R.id.settings_img_set_a);
@@ -62,6 +67,22 @@ public class settings extends AppCompatActivity {
             System.out.println("intent로 잘 불러와졌음!");
         }
 
+        btn_playerA_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playerA.profile_name = playerA_name.getText().toString();
+                Toast.makeText(getApplicationContext(), "프로필이 저장되었습니다!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        btn_playerB_name.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                playerB.profile_name = playerB_name.getText().toString();
+                Toast.makeText(getApplicationContext(), "프로필이 저장되었습니다!", Toast.LENGTH_SHORT).show();
+
+            }
+        });
         btn_to_main_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

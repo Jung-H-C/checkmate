@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -33,6 +34,7 @@ public class unit_allocation extends AppCompatActivity {
     ImageView alloc_A_profile, alloc_B_profile;
     ImageButton alloc_controller_A_0_0, alloc_controller_A_0_1, alloc_controller_A_1_0, alloc_controller_A_1_1;
     ImageButton alloc_controller_B_0_0, alloc_controller_B_0_1, alloc_controller_B_1_0, alloc_controller_B_1_1;
+    TextView alloc_A_profile_name, alloc_B_profile_name;
 
     ImageButton alloc_Button[][] = new ImageButton[4][5];
     Integer[][] Rid_alloc_button = {
@@ -54,6 +56,7 @@ public class unit_allocation extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.unit_allocation);
         System.out.println("디버깅:unit_allocation:onCreate발생!");
+
 
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
@@ -96,14 +99,26 @@ public class unit_allocation extends AppCompatActivity {
 
         alloc_A_profile = (ImageView) findViewById(R.id.alloc_A_profile);
         alloc_B_profile = (ImageView) findViewById(R.id.alloc_B_profile);
-        try {
-            Bitmap bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
-            alloc_A_profile.setImageBitmap(bitmap_a);
-            Bitmap bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
-            alloc_B_profile.setImageBitmap(bitmap_b);
+        alloc_A_profile_name = (TextView) findViewById(R.id.tv_profile_a);
+        alloc_B_profile_name = (TextView) findViewById(R.id.tv_profile_b);
 
-        } catch (IOException e) {
-            e.printStackTrace();
+        alloc_A_profile_name.setText(playerA.profile_name);
+        alloc_B_profile_name.setText(playerB.profile_name);
+
+        if(uri_a == null && uri_b == null) {
+            alloc_A_profile.setImageResource(R.drawable.king_a);
+            alloc_B_profile.setImageResource(R.drawable.king_b);
+        }else{
+
+            try {
+                Bitmap bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
+                alloc_A_profile.setImageBitmap(bitmap_a);
+                Bitmap bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
+                alloc_B_profile.setImageBitmap(bitmap_b);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
 //        alloc_A_profile.setImageBitmap(bitmap_A);

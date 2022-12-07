@@ -10,6 +10,7 @@ import android.os.Message;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -31,6 +32,8 @@ public class Game extends AppCompatActivity {
 
     ImageView a_profile, b_profile;
     TextView tv_profile_A, tv_profile_B;
+    Game_End_Dialog dialog;
+    Button game_end;
 
     // intent로 부터 불러올 player 객체
     Player playerA = null;
@@ -85,6 +88,7 @@ public class Game extends AppCompatActivity {
         Controller_B_0_1 = (ImageButton) findViewById(R.id.Controller_B_0_1);
         Controller_B_1_1 = (ImageButton) findViewById(R.id.Controller_B_1_1);
         Controller_B_king = (ImageButton) findViewById(R.id.Controller_B_king);
+        game_end = (Button) findViewById(R.id.btn_game_end);
 
         // imageButton 선언
         for (int x = 0; x<8; x++) {
@@ -140,6 +144,14 @@ public class Game extends AppCompatActivity {
 
             }
         }.start();
+
+        game_end.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         Controller_A_1_0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -568,6 +580,8 @@ public class Game extends AppCompatActivity {
                                     }
                                 }
                             }.start();
+                            //게임 끝났는지 검사
+                            IsGameEnd(playerA, playerB);
                             //차례 변경
                             if (teamflag) teamflag = false;
                             else teamflag = true;
@@ -684,51 +698,19 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    void chessEngine(Player playerA, Player playerB) {
-        while(IsGameEnd(playerA, playerB) == false) {
-            // 루프 시작
-            if(teamflag) {
-                // A팀 차례
-                pickUnit();
-                // 핸들러로 ui 호출
-                printUI = true;
-
-            }else {
-                // B팀 차례
-                pickUnit();
-            }
-
-        }
-    }
-
-    void pickUnit() {
-        if(teamflag) {
-            // A팀 말 선택
-            return;
-
-        } else{
-            // B팀 말 선택
-            return;
-        }
-    }
 
     void IsGameEnd(Player playerA, Player playerB) {
         if(playerA.units[2].isDead) {
             // 팝업창 띄우기
+            dialog = new Game_End_Dialog(this, playerA);
+            dialog.show();
         }else if(playerB.units[2].isDead) {
             // 팝업창 띄우기
+            dialog = new Game_End_Dialog(this, playerB);
+            dialog.show();
         }else return;
     }
 
-
-
-    void PlayerA_Win() {
-
-    }
-
-    void PlayerB_Win() {
-
-    }
 
     // 스레드 만드는 2가지 방법
 //    1) thread 클래스를 extends해서 만드는 스레드

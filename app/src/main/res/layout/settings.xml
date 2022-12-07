@@ -9,7 +9,7 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="80dp">
+        android:layout_height="30dp">
 
     </LinearLayout>
 
@@ -45,13 +45,15 @@
                     app:layout_constraintTop_toBottomOf="@+id/settings_img_profile_a"
                     app:srcCompat="@android:drawable/ic_menu_camera" />
 
-                <TextView
+                <EditText
                     android:id="@+id/settings_tv_profile_a"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="소환사 A"
                     android:textAlignment="center"
+                    android:textColor="#000000"
                     android:textSize="14sp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/settings_img_set_a" />
@@ -99,7 +101,9 @@
                     android:id="@+id/checkBox_bgm"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="효과음"
+                    android:text="효과음 넣기"
+                    android:textColor="#000000"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/settings_to_main_menu" />
@@ -135,13 +139,15 @@
                     app:layout_constraintTop_toBottomOf="@+id/settings_img_profile_b"
                     app:srcCompat="@android:drawable/ic_menu_camera" />
 
-                <TextView
+                <EditText
                     android:id="@+id/settings_tv_profile_b"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="소환사 B"
                     android:textAlignment="center"
+                    android:textColor="#000000"
                     android:textSize="14sp"
+                    android:visibility="visible"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/settings_img_set_b" />

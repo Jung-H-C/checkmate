@@ -7,7 +7,6 @@ import java.io.Serializable;
 public class Player implements Serializable {
     String profile_name;
     String profile_img;
-    Bitmap profile_image;
 
     Unit[] units;
     // units 스태틱 변수로 놓으면 안됨! 해당 player만 사용!
