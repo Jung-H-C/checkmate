@@ -128,6 +128,8 @@ public class unit_allocation extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), Game.class);
                 intent.putExtra("playerA", playerA);
                 intent.putExtra("playerB", playerB);
+                intent.putExtra("playerA_uri", uri_a);
+                intent.putExtra("playerB_uri", uri_b);
                 startActivity(intent);
             }
         });

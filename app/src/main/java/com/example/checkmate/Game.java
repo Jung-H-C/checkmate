@@ -2,9 +2,12 @@ package com.example.checkmate;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -15,6 +18,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import java.io.IOException;
 
 public class Game extends AppCompatActivity {
     private static Handler mHandler;
@@ -30,6 +35,7 @@ public class Game extends AppCompatActivity {
     // intent로 부터 불러올 player 객체
     Player playerA = null;
     Player playerB = null;
+    Uri uri_a, uri_b;
 
     Unit SelectedUnit = new Unit();
 
@@ -59,6 +65,8 @@ public class Game extends AppCompatActivity {
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
+        uri_a = intent.getParcelableExtra("playerA_uri");
+        uri_b = intent.getParcelableExtra("playerB_uri");
         // 전역변수에 할당
         playerA = player1;
         playerB = player2;
@@ -101,13 +109,24 @@ public class Game extends AppCompatActivity {
             public void run() {
                 // 프로필
                 Context c = getApplicationContext();
-                int id = c.getResources().getIdentifier(playerA.profile_img, null, c.getPackageName());
-                a_profile.setImageResource(id);
-                id = c.getResources().getIdentifier(playerB.profile_img, null, c.getPackageName());
-                b_profile.setImageResource(id);
+                Bitmap bitmap_a = null;
+                try {
+                    bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                a_profile.setImageBitmap(bitmap_a);
+                Bitmap bitmap_b = null;
+                try {
+                    bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                b_profile.setImageBitmap(bitmap_b);
 
                 tv_profile_A.setText(playerA.profile_name);
                 tv_profile_B.setText(playerB.profile_name);
+                int id;
 
                 // 보드판 말 출력
                 for(int x = 0; x<8; x++) {
@@ -693,21 +712,14 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    Boolean IsGameEnd(Player playerA, Player playerB) {
-        // 게임이 종료됐는지 판별해주는 함수
-        // 각 player의 왕이 살아있는지 check
-        // 종료시 -> return 1
-        if(playerA.units[2].isDead == true) {
-            PlayerA_Win();
-            return true;
-        }else if (playerB.units[2].isDead == true) {
-            PlayerB_Win();
-            return true;
-        }else {
-            return false;
-        }
-
+    void IsGameEnd(Player playerA, Player playerB) {
+        if(playerA.units[2].isDead) {
+            // 팝업창 띄우기
+        }else if(playerB.units[2].isDead) {
+            // 팝업창 띄우기
+        }else return;
     }
+
 
 
     void PlayerA_Win() {
