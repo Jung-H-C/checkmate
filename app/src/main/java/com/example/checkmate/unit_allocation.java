@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.ImageDecoder;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -47,6 +49,9 @@ public class unit_allocation extends AppCompatActivity {
     ImageButton btn_to_game;
     Button btn_to_menu;
 
+    SoundPool soundPool;
+    int soundID;
+
     int cur_X, cur_Y;
     int offset;
 
@@ -57,6 +62,9 @@ public class unit_allocation extends AppCompatActivity {
         setContentView(R.layout.unit_allocation);
         System.out.println("디버깅:unit_allocation:onCreate발생!");
 
+        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        soundID = soundPool.load(this,R.raw.blop, 1);
+
 
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
@@ -64,10 +72,6 @@ public class unit_allocation extends AppCompatActivity {
         uri_a = intent.getParcelableExtra("playerA_uri");
         uri_b = intent.getParcelableExtra("playerB_uri");
 
-//        byteArray_A = intent.getByteArrayExtra("A_profile");
-//        byteArray_B = intent.getByteArrayExtra("B_profile");
-//        Bitmap bitmap_A = BitmapFactory.decodeByteArray(byteArray_A, 0, byteArray_A.length);
-//        Bitmap bitmap_B = BitmapFactory.decodeByteArray(byteArray_B, 0, byteArray_B.length);
 
         playerA = player1;
         playerB = player2;
@@ -249,6 +253,9 @@ public class unit_allocation extends AppCompatActivity {
                         int id = c.getResources().getIdentifier(SelectedUnit.img_src, null, c.getPackageName());
                         alloc_Button[finalX][finalY].setImageResource(id);
                         SetAllUnClickable();
+
+                        //효과음
+                        soundPool.play(soundID, 1f, 1f, 0, 0, 1f);
                     }
                 });
             }
@@ -321,10 +328,10 @@ public class unit_allocation extends AppCompatActivity {
         playerB.units[3].setImg_src("drawable/ghost_b");
         playerB.units[4].setImg_src("drawable/car_b");
 
-        playerB.units[0].setImg_src("@drawable/horse_b");
-        playerB.units[1].setImg_src("@drawable/queen_b");
-        playerB.units[3].setImg_src("@drawable/ghost_b");
-        playerB.units[4].setImg_src("@drawable/car_b");
+        playerB.units[0].setImg_src("drawable/horse_b");
+        playerB.units[1].setImg_src("drawable/queen_b");
+        playerB.units[3].setImg_src("drawable/ghost_b");
+        playerB.units[4].setImg_src("drawable/car_b");
     }
 
     Boolean ChecksIfSelected(Unit Selected) {

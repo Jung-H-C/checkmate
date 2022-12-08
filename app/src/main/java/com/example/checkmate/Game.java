@@ -3,6 +3,8 @@ package com.example.checkmate;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -58,6 +60,9 @@ public class Game extends AppCompatActivity {
 
     Board boardbutton[][] = new Board[8][5];
 
+    SoundPool soundPool;
+    int soundID;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -90,6 +95,9 @@ public class Game extends AppCompatActivity {
         Controller_B_king = (ImageButton) findViewById(R.id.Controller_B_king);
         game_end = (Button) findViewById(R.id.btn_game_end);
 
+        soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
+        soundID = soundPool.load(this,R.raw.blop, 1);
+
         // imageButton 선언
         for (int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
@@ -109,24 +117,42 @@ public class Game extends AppCompatActivity {
             System.out.println(playerB.units[i].name +"의 : pos_x = " + playerB.units[i].getPos_x() + ", pos_y = " + playerB.units[i].getPos_y());
         }
 
+        if(uri_a == null && uri_b == null) {
+            a_profile.setImageResource(R.drawable.king_a);
+            b_profile.setImageResource(R.drawable.king_b);
+        }else{
+
+            try {
+                Bitmap bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
+                a_profile.setImageBitmap(bitmap_a);
+                Bitmap bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
+                b_profile.setImageBitmap(bitmap_b);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
         new Thread() {
             public void run() {
                 // 프로필
                 Context c = getApplicationContext();
-                Bitmap bitmap_a = null;
-                try {
-                    bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+                if(uri_a == null && uri_b == null) {
+                    a_profile.setImageResource(R.drawable.king_a);
+                    b_profile.setImageResource(R.drawable.king_b);
+                }else{
+
+                    try {
+                        Bitmap bitmap_a = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
+                        a_profile.setImageBitmap(bitmap_a);
+                        Bitmap bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
+                        b_profile.setImageBitmap(bitmap_b);
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-                a_profile.setImageBitmap(bitmap_a);
-                Bitmap bitmap_b = null;
-                try {
-                    bitmap_b = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                b_profile.setImageBitmap(bitmap_b);
 
                 tv_profile_A.setText(playerA.profile_name);
                 tv_profile_B.setText(playerB.profile_name);
@@ -582,6 +608,8 @@ public class Game extends AppCompatActivity {
                             }.start();
                             //게임 끝났는지 검사
                             IsGameEnd(playerA, playerB);
+                            //효과음
+                            soundPool.play(soundID, 1f, 1f, 0, 0, 1f);
                             //차례 변경
                             if (teamflag) teamflag = false;
                             else teamflag = true;

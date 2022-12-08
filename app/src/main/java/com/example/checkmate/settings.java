@@ -210,9 +210,9 @@ public class settings extends AppCompatActivity {
         playerB.units[3].setImg_src("drawable/ghost_b");
         playerB.units[4].setImg_src("drawable/car_b");
 
-        playerB.units[0].setImg_src("@drawable/horse_b");
-        playerB.units[1].setImg_src("@drawable/queen_b");
-        playerB.units[3].setImg_src("@drawable/ghost_b");
-        playerB.units[4].setImg_src("@drawable/car_b");
+        playerB.units[0].setImg_src("drawable/horse_b");
+        playerB.units[1].setImg_src("drawable/queen_b");
+        playerB.units[3].setImg_src("drawable/ghost_b");
+        playerB.units[4].setImg_src("drawable/car_b");
     }
 }
