@@ -664,6 +664,7 @@ public class Game extends AppCompatActivity {
 
         switch (Selected.name) {
             case "Horse":
+                System.out.println("말 입력");
                 if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
                 else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
                 else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
@@ -674,7 +675,66 @@ public class Game extends AppCompatActivity {
                 else if (pos_x - cur_x == -2 && pos_y - cur_y == 1) return true;
                 else return false;
             case "Queen":
-                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) return true;
+                if(Math.abs(cur_x - pos_x) == Math.abs(cur_y - pos_y)) {
+                    int tmp_x = cur_x;
+                    int tmp_y = cur_y;
+                    if(pos_x - cur_x > 0 && pos_y - cur_y > 0) {
+                        // 1사분면에 있을때:
+                        for(tmp_x = cur_x; tmp_x < pos_x; tmp_x++, tmp_y++) {
+                            System.out.println("x=" + pos_x + "y=" + pos_y);
+                            System.out.println("제 1사분면");
+                            if(tmp_x == cur_x) continue;
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
+                                System.out.println("x=" + (tmp_x + 1) + "y=" + (tmp_y + 1) + "에 유닛이 있습니다.");
+                                System.out.println("유닛 있음!");
+                                return false;
+                            }
+                            // 유닛사이에 장애물이 있으면 false
+                        }
+                        System.out.println("루프가 돌았습니다.");
+                        return true;
+                    }else if(pos_x - cur_x < 0 && pos_y - cur_y > 0) {
+                        // 2사분면에 있을때:
+                        for(tmp_y = cur_y; tmp_y < pos_y; tmp_x--, tmp_y++) {
+                            System.out.println("x=" + pos_x + "y=" + pos_y);
+                            System.out.println("제 2사분면");
+                            if(tmp_x == cur_x) continue;
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
+                                System.out.println("x=" + (tmp_x - 1) + "y=" + (tmp_y + 1) + "에 유닛이 있습니다.");
+                                System.out.println("유닛 있음!");
+                                return false;
+                            }
+                        }
+                        return true;
+                    }else if(pos_x - cur_x < 0 && pos_y - cur_y < 0) {
+                        // 3사분면에 있을때:
+                        for(tmp_y = cur_y; tmp_y > pos_y; tmp_x--, tmp_y--) {
+                            System.out.println("x=" + pos_x + "y=" + pos_y);
+                            System.out.println("제 3사분면");
+                            if(tmp_x == cur_x) continue;
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
+                                System.out.println("x=" + (tmp_x - 1) + "y=" + (tmp_y - 1) + "에 유닛이 있습니다.");
+                                System.out.println("유닛 있음!");
+                                return false;
+                            }
+                        }
+                        return true;
+                    }else {
+                        // 4사분면에 있을때:
+                        for(tmp_x = cur_x; tmp_x < pos_x; tmp_x++, tmp_y--) {
+                            System.out.println("x=" + pos_x + "y=" + pos_y);
+                            System.out.println("제 4사분면");
+                            if(tmp_x == cur_x) continue;
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
+                                System.out.println("x=" + (tmp_x + 1) + "y=" + (tmp_y - 1) + "에 유닛이 있습니다.");
+                                System.out.println("유닛 있음!");
+                                return false;
+                            }
+                        }
+                        System.out.println("루프가 돌았습니다.");
+                        return true;
+                    }
+                }
                 else return false;
             case "King":
                 if((cur_x != pos_x) && (cur_y != pos_y)) return false;
@@ -703,7 +763,21 @@ public class Game extends AppCompatActivity {
             case "Car":
                 // y값이 같을떄:
                 if(cur_y == pos_y) {
-                    if(Math.abs(cur_x - pos_x) <= 3) return true;
+                    if(Math.abs(cur_x - pos_x) <= 3) {
+                        int tmp_x = cur_x;
+                        if(tmp_x < pos_x) {
+                            for(tmp_x = cur_x; tmp_x < pos_x; tmp_x++) {
+                                if(tmp_x == cur_x) continue;
+                                if(boardbutton[tmp_x][cur_y].unitInside != null) return false;
+                            }
+                        }else {
+                            for(tmp_x = cur_x; tmp_x > pos_x; tmp_x--) {
+                                if(tmp_x == cur_x) continue;
+                                if(boardbutton[tmp_x][cur_y].unitInside != null) return false;
+                            }
+                        }
+                        return true;
+                    }
                     else return false;
                 }else {
                     if(cur_x != pos_x) return false;
