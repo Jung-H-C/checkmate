@@ -16,10 +16,16 @@
             android:id="@+id/tutorials_btn_to_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="14dp"
             android:layout_weight="1"
-            android:padding="4dp"
-            android:text="메인메뉴로" />
+            android:insetLeft="6dp"
+            android:insetTop="12dp"
+            android:insetRight="6dp"
+            android:insetBottom="12dp"
+            android:padding="0dp"
+            android:paddingLeft="4dp"
+            android:paddingRight="4dp"
+            android:text="메인메뉴로"
+            app:iconPadding="8dp" />
     </LinearLayout>
 
     <LinearLayout
@@ -36,21 +42,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="4dp"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="0dp">
 
                     <TextView
                         android:id="@+id/textView9"
-                        android:textColor="#0B0A0A"
-                        android:layout_width="wrap_content"
-                        android:textAlignment="center"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="게임소개\n\n본 게임은 2인용 게임으로 기존의 어렵고 따분한 체스게임에 전략적 요소와 재미를 추가하여 재구성하였습니다.\n게임에 들어가게 되면 우선 양진영에서 유닛을 자신이 원하는 위치에 배치할 수 있습니다." />
+                        android:text="Checkmate 소개\n\n체크메이트에 오신 여러분들 환영합니다!\n\n본 게임은 2인용게임으로 기존의 어렵고 따분한 체스게임에 전략적 요소와 재미를 추가하여 재구성하였습니다.\n\n게임에 들어가게 되면 밑에 보이는 사진과 같이 각 진영에서 자신이 원하는 유닛을 원하는 위치에 배치할 수 있습니다.\n"
+                        android:textAlignment="center"
+                        android:textColor="#0B0A0A" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -65,22 +73,40 @@
                         android:layout_height="197dp"
                         android:layout_weight="0"
                         android:adjustViewBounds="true"
-                        app:srcCompat="@drawable/unit_alloc_ex" />
+                        app:srcCompat="@drawable/first" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
                     <TextView
                         android:id="@+id/textView10"
-                        android:textColor="#0B0A0A"
                         android:layout_width="wrap_content"
-                        android:textAlignment="center"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="위의 화면과 같이 좌측팀은 ~~" />
+                        android:text="\n 각 진영에 있는 1,2,3,4번 박스를 차례로 설명해드리겠습니다!\n\n 1) 각 진영의 아이콘입니다.\n\n 2) 플레이어 이름입니다.\n\n(1,2번은 환경설정에서 변경할 수 있습니다.)\n\n3) 각 진영의 컨트롤러입니다. 컨트롤러에서 원하는 유닛을 누르면\n원하는 칸에 할당, 배치가 가능합니다!\n\n4) 각 진영입니다.\n\n(게임 시작전 유닛 배치는 2x5로 이루어진 자기 진영내에서만 가능합니다.)\n"
+                        android:textAlignment="center"
+                        android:textColor="#0B0A0A" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView11"
+                        android:layout_width="495dp"
+                        android:layout_height="197dp"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/second" />
+
                 </LinearLayout>
 
                 <LinearLayout
@@ -102,9 +128,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text="말\n움직임: 대문자 L자 모양으로 이동합니다. \n기존 체스와 같습니다. "
+                        android:paddingLeft="10dp"
+                        android:text="말\n움직임: 대문자 L자 모양으로 이동합니다. \n유일하게 다른 말을 뛰어넘어 다닐 수 있습니다.\n"
                         android:textColor="#0B0A0A" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView12"
+                        android:layout_width="495dp"
+                        android:layout_height="197dp"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/third" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -126,8 +169,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text='차\n움직임: 좌우로 세 칸 상하로 한 칸내 어디든지 갈 수 있습니다. '
+                        android:paddingLeft="10dp"
+                        android:text='차\n움직임: 좌우로 세 칸, 상하로 한 칸\n'
                         android:textColor="#0B0A0A" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView13"
+                        android:layout_width="495dp"
+                        android:layout_height="197dp"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/fourth" />
 
                 </LinearLayout>
 
@@ -150,8 +211,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text='킹\n움직임: 상하좌우 한 칸내 어디든지 갈 수 있습니다.\n킹이 죽으면 게임을 패배하게 됩니다. '
+                        android:paddingLeft="10dp"
+                        android:text='킹\n움직임: 상하좌우 한 칸내 어디든지 갈 수 있습니다.\n킹이 죽으면 게임을 패배하게 됩니다.\n'
                         android:textColor="#0B0A0A" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView14"
+                        android:layout_width="495dp"
+                        android:layout_height="197dp"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/fifth" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -173,8 +251,25 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text='고스트\n움직임: 좌우 한 칸내 혹은 아군 유닛과 자리를 바꿀수 있습니다. '
+                        android:paddingLeft="10dp"
+                        android:text='고스트\n움직임: 좌우 한 칸내 혹은 아군 유닛과 자리를 바꿀수 있습니다.\n바꿀 수 있는 칸에 있는 유닛은 초록색 타일로 표시가 됩니다.\n'
                         android:textColor="#0B0A0A" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="495dp"
+                        android:layout_height="197dp"
+                        android:layout_weight="0"
+                        android:adjustViewBounds="true"
+                        app:srcCompat="@drawable/sixth" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -196,15 +291,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
+                        android:paddingLeft="10dp"
                         android:text='비숍\n움직임: 대각선으로 어디든지 갈 수 있습니다. '
                         android:textColor="#0B0A0A" />
                 </LinearLayout>
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -212,17 +302,6 @@
                     android:layout_height="wrap_content"
                     android:text="TextView" />
 
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    tools:srcCompat="@tools:sample/avatars" />
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

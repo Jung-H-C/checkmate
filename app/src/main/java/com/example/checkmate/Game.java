@@ -25,19 +25,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 
 public class Game extends AppCompatActivity {
-    private static Handler mHandler;
 
     boolean teamflag = true; // true: playerA 차례
-    boolean printUI = false;
-
-    Board[][] board = new Board[5][8];
-
     ImageView a_profile, b_profile;
     TextView tv_profile_A, tv_profile_B;
     Game_End_Dialog dialog;
     Button game_end;
 
-    // intent로 부터 불러올 player 객체
     Player playerA = null;
     Player playerB = null;
     Uri uri_a, uri_b;
@@ -58,7 +52,7 @@ public class Game extends AppCompatActivity {
             R.id.Button_6_3, R.id.Button_6_4}, {R.id.Button_7_0, R.id.Button_7_1, R.id.Button_7_2,
             R.id.Button_7_3, R.id.Button_7_4}};
 
-    Board boardbutton[][] = new Board[8][5];
+    Board[][] boardbutton = new Board[8][5];
 
     SoundPool soundPool;
     int soundID;
@@ -69,13 +63,13 @@ public class Game extends AppCompatActivity {
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.game);
 
-        // playerA, playerB 정보 받아옴
+        // 객체 전달 받기
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
         uri_a = intent.getParcelableExtra("playerA_uri");
         uri_b = intent.getParcelableExtra("playerB_uri");
-        // 전역변수에 할당
+
         playerA = player1;
         playerB = player2;
 
@@ -98,23 +92,16 @@ public class Game extends AppCompatActivity {
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         soundID = soundPool.load(this,R.raw.blop, 1);
 
-        // imageButton 선언
         for (int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
-                // 보드판 이미지 선언
                 button[x][y] = (ImageButton) findViewById(Rid_button[x][y]);
-                // 보드판을 각 boardbutton class에 짝을 맞춰줌
                 boardbutton[x][y] = new Board(x, y);
             }
         }
 
-        //* imageButton setonclick listner 작성후
-        // 버튼 클릭시 해당 버튼에 있는 유닛을 SelectedUnit으로 할당당
         for(int i = 0; i<5; i++) {
             boardbutton[playerA.units[i].getPos_x()][playerA.units[i].getPos_y()].unitInside =playerA.units[i];
             boardbutton[playerB.units[i].getPos_x()][playerB.units[i].getPos_y()].unitInside =playerB.units[i];
-            System.out.println(playerA.units[i].name +"의 : pos_x = " + playerA.units[i].getPos_x() + ", pos_y = " + playerA.units[i].getPos_y());
-            System.out.println(playerB.units[i].name +"의 : pos_x = " + playerB.units[i].getPos_x() + ", pos_y = " + playerB.units[i].getPos_y());
         }
 
         if(uri_a == null && uri_b == null) {
@@ -171,6 +158,7 @@ public class Game extends AppCompatActivity {
             }
         }.start();
 
+        // 컨트롤러 버튼
         game_end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -523,7 +511,7 @@ public class Game extends AppCompatActivity {
             }
         });
 
-
+        // 각 타일 클릭리스너
         for(int x = 0; x<8; x++) {
             for (int y = 0; y<5; y++) {
                 int finalX = x;
@@ -567,10 +555,8 @@ public class Game extends AppCompatActivity {
                                 boardbutton[temp_x][temp_y].unitInside = tempUnit;
                                 if (teamflag) {
                                     playerA.units[boardbutton[temp_x][temp_y].unitInside.returnUnitCode()].setPos(temp_x, temp_y);
-                                    System.out.println("디버깅A");
                                 } else
                                     playerB.units[boardbutton[temp_x][temp_y].unitInside.returnUnitCode()].setPos(temp_x, temp_y);
-                                    System.out.println("디버깅B");
                             }
                         } else {
                             // 빈 곳으로
@@ -582,19 +568,10 @@ public class Game extends AppCompatActivity {
                                 boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
                                 playerB.units[unitCode].setPos(finalX, finalY);
                             }
-//                        boardbutton[finalX][finalY].unitInside = SelectedUnit;
-//                        if (teamflag) {
-//                            boardbutton[playerA.units[unitCode].getPos_x()][playerA.units[unitCode].getPos_y()].unitInside = null;
-//                            playerA.units[unitCode].setPos(finalX, finalY);
-//                        } else {
-//                            boardbutton[playerB.units[unitCode].getPos_x()][playerB.units[unitCode].getPos_y()].unitInside = null;
-//                            playerB.units[unitCode].setPos(finalX, finalY);
-//                        }
                         }
                             new Thread() {
                                 //UI 출력
                                 public void run() {
-                                    System.out.println("ui thread실행");
                                     Context c = getApplicationContext();
                                     int id;
                                     for (int x = 0; x < 8; x++) {
@@ -618,42 +595,6 @@ public class Game extends AppCompatActivity {
             }
         }
 
-//       mHandler = new Handler() {
-//            @Override
-//            public void handleMessage(@NonNull Message msg) {
-////                super.handleMessage(msg); 자동 완성코드 없어도될듯
-//                // UI 출력 코드
-//                for (int x = 0; x<8; x++) {
-//                    for (int y = 0; y<5; y++) {
-//                        //board imagebutton 출력
-//
-//                    }
-//                }
-//            }
-//        };
-
-        // 서브 스레드 (1초마다 UI 출력하는 핸들러 불러옴)
-        // https://recipes4dev.tistory.com/150 참고
-//        class UI_Printer implements Runnable {
-//            @Override
-//            public void run() {
-//                while (printUI) {
-//                    mHandler.sendEmptyMessage(0);
-//                    printUI = false;
-//                    // 1초마다 불러오려면 사용 (안해도 될듯)
-////                    try {
-////                        Thread.sleep(1000);
-////                    } catch (Exception e) {
-////                        e.printStackTrace();
-////                    }
-//                }
-//            }
-//        }
-
-
-        // 버튼 40개 onclickListener 구현 (for문으로)
-        // + click시 해당 button에 unit있을시 SelectedUnit 에 update
-
 
     }
     // Selected 유닛이 (pos_x, pos_y)로 이동할 수 있는지 boolean return 함수
@@ -664,7 +605,6 @@ public class Game extends AppCompatActivity {
 
         switch (Selected.name) {
             case "Horse":
-                System.out.println("말 입력");
                 if(pos_x - cur_x == -1 && pos_y - cur_y == 2) return true;
                 else if(pos_x - cur_x == 1 && pos_y - cur_y == 2) return true;
                 else if (pos_x - cur_x == 2 && pos_y - cur_y == 1) return true;
@@ -681,58 +621,29 @@ public class Game extends AppCompatActivity {
                     if(pos_x - cur_x > 0 && pos_y - cur_y > 0) {
                         // 1사분면에 있을때:
                         for(tmp_x = cur_x; tmp_x < pos_x; tmp_x++, tmp_y++) {
-                            System.out.println("x=" + pos_x + "y=" + pos_y);
-                            System.out.println("제 1사분면");
                             if(tmp_x == cur_x) continue;
-                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
-                                System.out.println("x=" + (tmp_x + 1) + "y=" + (tmp_y + 1) + "에 유닛이 있습니다.");
-                                System.out.println("유닛 있음!");
-                                return false;
-                            }
-                            // 유닛사이에 장애물이 있으면 false
-                        }
-                        System.out.println("루프가 돌았습니다.");
-                        return true;
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) return false;
+                        } return true;
                     }else if(pos_x - cur_x < 0 && pos_y - cur_y > 0) {
                         // 2사분면에 있을때:
                         for(tmp_y = cur_y; tmp_y < pos_y; tmp_x--, tmp_y++) {
-                            System.out.println("x=" + pos_x + "y=" + pos_y);
-                            System.out.println("제 2사분면");
                             if(tmp_x == cur_x) continue;
-                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
-                                System.out.println("x=" + (tmp_x - 1) + "y=" + (tmp_y + 1) + "에 유닛이 있습니다.");
-                                System.out.println("유닛 있음!");
-                                return false;
-                            }
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) return false;
                         }
                         return true;
                     }else if(pos_x - cur_x < 0 && pos_y - cur_y < 0) {
                         // 3사분면에 있을때:
                         for(tmp_y = cur_y; tmp_y > pos_y; tmp_x--, tmp_y--) {
-                            System.out.println("x=" + pos_x + "y=" + pos_y);
-                            System.out.println("제 3사분면");
                             if(tmp_x == cur_x) continue;
-                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
-                                System.out.println("x=" + (tmp_x - 1) + "y=" + (tmp_y - 1) + "에 유닛이 있습니다.");
-                                System.out.println("유닛 있음!");
-                                return false;
-                            }
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) return false;
                         }
                         return true;
                     }else {
                         // 4사분면에 있을때:
                         for(tmp_x = cur_x; tmp_x < pos_x; tmp_x++, tmp_y--) {
-                            System.out.println("x=" + pos_x + "y=" + pos_y);
-                            System.out.println("제 4사분면");
                             if(tmp_x == cur_x) continue;
-                            if(boardbutton[tmp_x][tmp_y].unitInside != null) {
-                                System.out.println("x=" + (tmp_x + 1) + "y=" + (tmp_y - 1) + "에 유닛이 있습니다.");
-                                System.out.println("유닛 있음!");
-                                return false;
-                            }
-                        }
-                        System.out.println("루프가 돌았습니다.");
-                        return true;
+                            if(boardbutton[tmp_x][tmp_y].unitInside != null) return false;
+                        }return true;
                     }
                 }
                 else return false;
@@ -750,15 +661,13 @@ public class Game extends AppCompatActivity {
                     if(!playerA.units[0].isDead && (playerA.units[0].getPos_x() == pos_x && playerA.units[0].getPos_y() == pos_y)) return true;
                     if(!playerA.units[1].isDead && (playerA.units[1].getPos_x() == pos_x && playerA.units[1].getPos_y() == pos_y)) return true;
                     if(!playerA.units[2].isDead && (playerA.units[2].getPos_x() == pos_x && playerA.units[2].getPos_y() == pos_y)) return true;
-                    if(!playerA.units[4].isDead && (playerA.units[4].getPos_x() == pos_x && playerA.units[4].getPos_y() == pos_y)) return true;
-                    return false;
+                    return !playerA.units[4].isDead && (playerA.units[4].getPos_x() == pos_x && playerA.units[4].getPos_y() == pos_y);
                 }else {
                     // playerB일떄:
                     if(!playerB.units[0].isDead && (playerB.units[0].getPos_x() == pos_x && playerB.units[0].getPos_y() == pos_y)) return true;
                     if(!playerB.units[1].isDead && (playerB.units[1].getPos_x() == pos_x && playerB.units[1].getPos_y() == pos_y)) return true;
                     if(!playerB.units[2].isDead && (playerB.units[2].getPos_x() == pos_x && playerB.units[2].getPos_y() == pos_y)) return true;
-                    if(!playerB.units[4].isDead && (playerB.units[4].getPos_x() == pos_x && playerB.units[4].getPos_y() == pos_y)) return true;
-                    return false;
+                    return !playerB.units[4].isDead && (playerB.units[4].getPos_x() == pos_x && playerB.units[4].getPos_y() == pos_y);
                 }
             case "Car":
                 // y값이 같을떄:
@@ -804,22 +713,13 @@ public class Game extends AppCompatActivity {
     void IsGameEnd(Player playerA, Player playerB) {
         if(playerA.units[2].isDead) {
             // 팝업창 띄우기
-            dialog = new Game_End_Dialog(this, playerA);
+            dialog = new Game_End_Dialog(this, playerB);
             dialog.show();
         }else if(playerB.units[2].isDead) {
             // 팝업창 띄우기
-            dialog = new Game_End_Dialog(this, playerB);
+            dialog = new Game_End_Dialog(this, playerA);
             dialog.show();
         }else return;
     }
-
-
-    // 스레드 만드는 2가지 방법
-//    1) thread 클래스를 extends해서 만드는 스레드
-//    2) Runnable 인터페이스를 implements해서 만드는 스레드
-
-
-
-
 }
 

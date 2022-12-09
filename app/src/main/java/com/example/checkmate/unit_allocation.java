@@ -27,17 +27,18 @@ import java.io.IOException;
 public class unit_allocation extends AppCompatActivity {
 
     Player playerA, playerB;
-    byte[] byteArray_A, byteArray_B;
     Unit SelectedUnit = null;
     Uri uri_a, uri_b;
 
-    Board alloc_boardbutton[][] = new Board[4][5];
+    // 보드판 선언
+    Board[][] alloc_boardbutton = new Board[4][5];
 
     ImageView alloc_A_profile, alloc_B_profile;
     ImageButton alloc_controller_A_0_0, alloc_controller_A_0_1, alloc_controller_A_1_0, alloc_controller_A_1_1;
     ImageButton alloc_controller_B_0_0, alloc_controller_B_0_1, alloc_controller_B_1_0, alloc_controller_B_1_1;
     TextView alloc_A_profile_name, alloc_B_profile_name;
 
+    // 각 타일 이미지버튼 선언
     ImageButton alloc_Button[][] = new ImageButton[4][5];
     Integer[][] Rid_alloc_button = {
             {R.id.alloc_Button_0_0, R.id.alloc_Button_0_1, R.id.alloc_Button_0_2, R.id.alloc_Button_0_3, R.id.alloc_Button_0_4},
@@ -49,9 +50,11 @@ public class unit_allocation extends AppCompatActivity {
     ImageButton btn_to_game;
     Button btn_to_menu;
 
+    // 효과음 객체
     SoundPool soundPool;
     int soundID;
 
+    // 유닛 움직임 함수에 쓰이는 현재 위치 변수
     int cur_X, cur_Y;
     int offset;
 
@@ -60,30 +63,21 @@ public class unit_allocation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.unit_allocation);
-        System.out.println("디버깅:unit_allocation:onCreate발생!");
 
         soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         soundID = soundPool.load(this,R.raw.blop, 1);
 
-
+        // 객체 전달 받기
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
         uri_a = intent.getParcelableExtra("playerA_uri");
         uri_b = intent.getParcelableExtra("playerB_uri");
 
-
         playerA = player1;
         playerB = player2;
 
-        if(playerA == null && playerB == null) {
-            System.out.println("디버깅:unit_allocation:동기화 안됨!");
-            BaseSetting(playerA, playerB);
-        }else {
-            System.out.println("디버깅:" + playerA.units[0].img_src);
-        }
-
-
+        // 보드판 정의
         for (int x = 0; x<4; x++) {
             for (int y = 0; y<5; y++) {
                 alloc_Button[x][y] = (ImageButton) findViewById(Rid_alloc_button[x][y]);
@@ -109,6 +103,7 @@ public class unit_allocation extends AppCompatActivity {
         alloc_A_profile_name.setText(playerA.profile_name);
         alloc_B_profile_name.setText(playerB.profile_name);
 
+        // 최초 UI 화면 출력
         if(uri_a == null && uri_b == null) {
             alloc_A_profile.setImageResource(R.drawable.king_a);
             alloc_B_profile.setImageResource(R.drawable.king_b);
@@ -125,13 +120,8 @@ public class unit_allocation extends AppCompatActivity {
             }
         }
 
-//        alloc_A_profile.setImageBitmap(bitmap_A);
-//        alloc_B_profile.setImageBitmap(bitmap_B);
-
         alloc_boardbutton[0][2].unitInside = playerA.units[2];
         alloc_boardbutton[3][2].unitInside = playerB.units[2];
-//        alloc_A_profile.setImageBitmap(playerA.profile_image);
-//        alloc_B_profile.setImageBitmap(playerB.profile_image);
 
         btn_to_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -152,6 +142,7 @@ public class unit_allocation extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         // 컨트롤러 클릭시
         alloc_controller_A_0_0.setOnClickListener(new View.OnClickListener() {
             @Override

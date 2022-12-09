@@ -29,7 +29,6 @@ import java.io.IOException;
 public class settings extends AppCompatActivity {
 
     Uri uri_a, uri_b;
-    Bitmap playerA_profile, playerB_profile;
 
     Button btn_playerA_name, btn_playerB_name, btn_to_main_menu;
     ImageButton Imgbtn_playerA_profile, Imgbtn_playerB_profile;
@@ -38,8 +37,6 @@ public class settings extends AppCompatActivity {
     CheckBox bgm_on;
 
     Player playerA, playerB;
-
-    byte[] byteArray_A, byteArray_B;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -62,10 +59,6 @@ public class settings extends AppCompatActivity {
         playerA = new Player();
         playerB = new Player();
         BaseSetting(playerA, playerB);
-
-        if(playerA.units[1].img_src == "drawable/queen_a") {
-            System.out.println("intent로 잘 불러와졌음!");
-        }
 
         btn_playerA_name.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -94,6 +87,9 @@ public class settings extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        // 갤러리에서 프로필 불러오기
         Imgbtn_playerA_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -110,7 +106,6 @@ public class settings extends AppCompatActivity {
                 startActivityResult_B.launch(intent);
             }
         });
-
     }
     ActivityResultLauncher<Intent> startActivityResult_A = registerForActivityResult(
             new ActivityResultContracts.StartActivityForResult(),
@@ -122,25 +117,8 @@ public class settings extends AppCompatActivity {
 
                         try {
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_a);
-//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                            bitmap.compress(Bitmap.CompressFormat.PNG, 1, stream);
-//                            byteArray_A = stream.toByteArray();
-//                            float scale = (float) (1024/(float)bitmap.getWidth());
-//                            int image_w = (int) (bitmap.getWidth() * scale);
-//                            int image_h = (int) (bitmap.getHeight() * scale);
-//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                            Bitmap resize = Bitmap.createScaledBitmap(bitmap, image_w, image_h, true);
-//                            resize.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-////                            만약 오류시 jpeg로 한번더 트라이
-//                            byteArray_A = stream.toByteArray();
-////                            playerA_profile = bitmap;
-
                             imgview_profile_a.setImageBitmap(bitmap);
-//                            playerA.profile_image = playerA_profile;
-
-                        }catch (FileNotFoundException e){
-                            e.printStackTrace();
-                        }catch (IOException e){
+                        } catch (IOException e){
                             e.printStackTrace();
                         }
                     }
@@ -157,25 +135,8 @@ public class settings extends AppCompatActivity {
 
                         try {
                             Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri_b);
-//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-//                            byteArray_B = stream.toByteArray();
-//                            float scale = (float) (1024/(float)bitmap.getWidth());
-//                            int image_w = (int) (bitmap.getWidth() * scale);
-//                            int image_h = (int) (bitmap.getHeight() * scale);
-//                            ByteArrayOutputStream stream = new ByteArrayOutputStream();
-//                            Bitmap resize = Bitmap.createScaledBitmap(bitmap, image_w, image_h, true);
-//                            resize.compress(Bitmap.CompressFormat.PNG, 100, stream);
-////                            만약 오류시 jpeg로 한번더 트라이
-//                            byteArray_B = stream.toByteArray();
-////                            playerB_profile = bitmap;
-//
                             imgview_profile_b.setImageBitmap(bitmap);
-//                            playerB.profile_image = playerB_profile;
-
-                        }catch (FileNotFoundException e){
-                            e.printStackTrace();
-                        }catch (IOException e){
+                        } catch (IOException e){
                             e.printStackTrace();
                         }
                     }

@@ -9,21 +9,10 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 
-// 액티비티 (main -> game)간 주고 받을때 intent 관련 참고 링크:
-// https://stickode.tistory.com/366 (serialize 필수)
-// intent로 주고 받아야하는 객체: player 클래스의 양 팀 객체 2개
-// (player안에 말 종류, 위치 다 포함되어있음.)
-//
-
-// 암시적 인텐트: call, pdf read 등 이미 폰에 내장된 앱 사용시에만 사용
-// 본 애플리케이션에서는 그닥 쓸 필요 없음.
-
-// 어댑터뷰 chapter.11 강의 다시 들어봐야할듯
 public class MainActivity extends AppCompatActivity {
 
     Button game_start, go_to_setting, go_to_tutorial;
     Player playerA, playerB;
-    byte[] byteArray_A, byteArray_B;
     Uri uri_a, uri_b;
 
     @Override
@@ -31,23 +20,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_main);
-        System.out.println("디버깅:메인액티비티 onCreate발생!");
 
+        // 객체 전달 받기
         Intent intent = getIntent();
         Player player1 = (Player) intent.getSerializableExtra("playerA");
         Player player2 = (Player) intent.getSerializableExtra("playerB");
-//        byteArray_A = intent.getByteArrayExtra("playerA_profile_img");
-//        byteArray_B = intent.getByteArrayExtra("playerB_profile_img");
         uri_a = intent.getParcelableExtra("playerA_uri");
         uri_b = intent.getParcelableExtra("playerB_uri");
 
-        if(player1 != null && player2 != null) {
-            System.out.println("디버깅:intent로 player 동기화됨!");
-        }else {
-            System.out.println("디버깅:동기화 안됨!");
-            player1 = new Player();
-            player2 = new Player();
-        }
         playerA = player1;
         playerB = player2;
 
@@ -55,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         go_to_setting = (Button) findViewById(R.id.btn_to_setting);
         go_to_tutorial = (Button) findViewById(R.id.btn_to_tutorials);
 
+        // 게임시작 버튼
         game_start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // 환경설정 버튼
         go_to_setting.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        // 게임설명 버튼
         go_to_tutorial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -409,19 +409,19 @@
         android:id="@+id/Controller_A_king"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Controller_A_Layout"
         app:layout_constraintEnd_toStartOf="@+id/gridLayout"
+        app:layout_constraintHorizontal_bias="0.61"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/king_a" />
 
     <ImageButton
         android:id="@+id/Controller_B_king"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/Controller_B_Layout"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toEndOf="@+id/gridLayout"
-        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/king_b" />
 </androidx.constraintlayout.widget.ConstraintLayout>
