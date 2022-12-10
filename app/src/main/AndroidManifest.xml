@@ -8,7 +8,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_chessmate"
         android:roundIcon="@mipmap/ic_chessmate_round"
-        android:label="checkmate"
+        android:label="Chessmate"
         android:supportsRtl="true"
         android:theme="@style/Theme.Checkmate"
         tools:targetApi="31">

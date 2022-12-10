@@ -56,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Checkmate 소개\n\n체크메이트에 오신 여러분들 환영합니다!\n\n본 게임은 2인용게임으로 기존의 어렵고 따분한 체스게임에 전략적 요소와 재미를 추가하여 재구성하였습니다.\n\n게임에 들어가게 되면 밑에 보이는 사진과 같이 각 진영에서 자신이 원하는 유닛을 원하는 위치에 배치할 수 있습니다.\n"
+                        android:text="Chessmate 소개\n\n체크메이트에 오신 여러분들 환영합니다!\n\n본 게임은 2인용게임으로 기존의 어렵고 따분한 체스게임에 전략적 요소와 재미를 추가하여 재구성하였습니다.\n\n게임에 들어가게 되면 밑에 보이는 사진과 같이 각 진영에서 자신이 원하는 유닛을 원하는 위치에 배치할 수 있습니다.\n"
                         android:textAlignment="center"
                         android:textColor="#0B0A0A" />
                 </LinearLayout>
