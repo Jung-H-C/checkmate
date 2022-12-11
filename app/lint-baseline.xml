@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.3.0" type="baseline" client="gradle" dependencies="false" name="AGP (7.3.0)" variant="fatal" version="7.3.0">
+
+    <issue
+        id="MissingDefaultResource"
+        message="The layout &quot;game&quot; in layout-land has no declaration in the base `layout` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier"
+        errorLine1="&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2=" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout-land/game.xml"
+            line="2"
+            column="2"/>
+    </issue>
+
+    <issue
+        id="MissingDefaultResource"
+        message="The layout &quot;game_end_custom&quot; in layout-land has no declaration in the base `layout` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier"
+        errorLine1="&lt;androidx.constraintlayout.widget.ConstraintLayout"
+        errorLine2=" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout-land/game_end_custom.xml"
+            line="2"
+            column="2"/>
+    </issue>
+
+    <issue
+        id="MissingDefaultResource"
+        message="The layout &quot;tutorials&quot; in layout-land has no declaration in the base `layout` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier"
+        errorLine1="&lt;LinearLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2=" ~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout-land/tutorials.xml"
+            line="2"
+            column="2"/>
+    </issue>
+
+    <issue
+        id="MissingDefaultResource"
+        message="The layout &quot;unit_allocation&quot; in layout-land has no declaration in the base `layout` folder; this can lead to crashes when the resource is queried in a configuration that does not match this qualifier"
+        errorLine1="&lt;androidx.constraintlayout.widget.ConstraintLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;"
+        errorLine2=" ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout-land/unit_allocation.xml"
+            line="2"
+            column="2"/>
+    </issue>
+
+</issues>
